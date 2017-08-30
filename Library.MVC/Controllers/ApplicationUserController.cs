@@ -10,6 +10,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 using System.Security.Claims;
+using Library.ViewModels.ApplicationUser;
+using Library.Entities;
 
 namespace Library.MVC.Controllers
 {

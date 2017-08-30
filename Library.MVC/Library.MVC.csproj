@@ -147,12 +147,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\ApplicationContext.cs" />
-    <Compile Include="Models\ApplicationUser.cs" />
-    <Compile Include="Models\ApplicationUserCurrentViewModel.cs" />
-    <Compile Include="Models\ApplicationUserEditViewModel.cs" />
-    <Compile Include="Models\ApplicationUserLoginViewModel.cs" />
-    <Compile Include="Models\ApplicationUserRegisterViewModel.cs" />
     <Compile Include="Models\ApplicationUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -175,6 +169,24 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Library.BLL\Library.BLL.csproj">
+      <Project>{b0714c3f-8581-4a5c-afb8-3df332004ca4}</Project>
+      <Name>Library.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library.DAL\Library.DAL.csproj">
+      <Project>{45448db5-ce7a-42b9-a533-847adb21dad7}</Project>
+      <Name>Library.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library.Entities\Library.Entities.csproj">
+      <Project>{30675245-4772-4631-9fb2-c0b2788cf641}</Project>
+      <Name>Library.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library.ViewModels\Library.ViewModels.csproj">
+      <Project>{723f0387-ad39-4b89-8314-893f527fe022}</Project>
+      <Name>Library.ViewModels</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Library.MVC.Models
+namespace Library.ViewModels.ApplicationUser
 {
     public class ApplicationUserRegisterViewModel
     {

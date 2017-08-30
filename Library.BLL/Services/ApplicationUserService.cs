@@ -5,7 +5,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 
-namespace Library.MVC.Models
+namespace Library.BLL.Services
 {
     public class ApplicationUserService : UserManager<ApplicationUser>
     {

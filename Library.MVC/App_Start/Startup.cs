@@ -3,6 +3,7 @@ using Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.AspNet.Identity;
 using Library.MVC.Models;
+using Library.DAL.EF;
 
 [assembly: OwinStartup(typeof(AspNetIdentityApp.Startup))]
 
@@ -18,7 +19,7 @@ namespace AspNetIdentityApp
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-                LoginPath = new PathString("/Account/Login"),
+                LoginPath = new PathString("/ApplicationUser/Login"),
             });
         }
     }

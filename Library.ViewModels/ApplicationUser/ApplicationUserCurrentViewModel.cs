@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Library.MVC.Models
+namespace Library.ViewModels.ApplicationUser
 {
     public class ApplicationUserCurrentViewModel
     {
