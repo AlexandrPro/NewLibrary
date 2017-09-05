@@ -1,40 +1,44 @@
 ﻿using Library.BLL.Services;
-using Library.ViewModels.Publication;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using Kendo.Mvc.Extensions;
+using Kendo.Mvc.UI;
 
-namespace Library.MVC.Controllers
+
+namespace Library.Controllers
 {
-    public class PubliationController : Controller
+    public class PublicationController : Controller
     {
         PublicationService publicationService;
-        public PubliationController()
+        public PublicationController()
         {
             publicationService = new PublicationService();
         }
-        // GET: Publiation
+        // GET: Item
         public ActionResult Index()
         {
-            IndexPublicationViewModel publication = publicationService.GetAll();
-            return View(publication);
+            //IndexItemViewModel items = itemService.GetAll();
+            //return View(items);
+            return View();
         }
 
-        // GET: Publiation/Details/5
+        public JsonResult Publications_Read([DataSourceRequest] DataSourceRequest request)
+        {
+            return Json(publicationService.GetAll().publications.ToDataSourceResult(request));
+        }
+
+        // GET: Item/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Publiation/Create
+        // GET: Item/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Publiation/Create
+        // POST: Item/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -50,13 +54,13 @@ namespace Library.MVC.Controllers
             }
         }
 
-        // GET: Publiation/Edit/5
+        // GET: Item/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Publiation/Edit/5
+        // POST: Item/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -72,13 +76,13 @@ namespace Library.MVC.Controllers
             }
         }
 
-        // GET: Publiation/Delete/5
+        // GET: Item/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Publiation/Delete/5
+        // POST: Item/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {

@@ -1,12 +1,10 @@
-﻿using Library.BLL.Services;
+﻿using System.Web.Mvc;
+using Library.BLL.Services;
+using Kendo.Mvc.UI;
+using Kendo.Mvc.Extensions;
 using Library.ViewModels.Book;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
 
-namespace Library.MVC.Controllers
+namespace Library.Controllers
 {
     public class BookController : Controller
     {
@@ -15,13 +13,18 @@ namespace Library.MVC.Controllers
         {
             bookService = new BookService();
         }
+
         // GET: Book
         public ActionResult Index()
         {
-            IndexBookViewModel books = bookService.GetAll();
-            return View(books);
+            //IndexBookViewModel books = bookService.GetAll();
+            //return View(books);
+            return View();
         }
-
+        public JsonResult Books_Read([DataSourceRequest] DataSourceRequest request)
+        {
+            return Json(bookService.GetAll().books.ToDataSourceResult(request));
+        }
         // GET: Book/Details/5
         public ActionResult Details(int id)
         {
@@ -46,7 +49,8 @@ namespace Library.MVC.Controllers
             }
             catch
             {
-                return View();
+                throw;
+                //return View();
             }
         }
 
