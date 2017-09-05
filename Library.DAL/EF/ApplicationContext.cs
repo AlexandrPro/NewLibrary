@@ -10,8 +10,10 @@ namespace Library.DAL.EF
         public ApplicationContext() : base("NewLibrary") { }
 
         public virtual DbSet<Book> Books { get; set; }
+        public virtual DbSet<Magazine> Magazines { get; set; }
+        public virtual DbSet<Brochure> Brochures { get; set; }
         public virtual DbSet<Publication> Publications { get; set; }
-        
+
         public static ApplicationContext Create()
         {
             return new ApplicationContext();

@@ -47,6 +47,10 @@
     <Compile Include="ApplicationUser\ApplicationUserRegisterViewModel.cs" />
     <Compile Include="Book\CreateBookViewModel.cs" />
     <Compile Include="Book\IndexBookViewModel.cs" />
+    <Compile Include="Brochure\CreateBrochureViewModel.cs" />
+    <Compile Include="Brochure\IndexBrochureViewModel.cs" />
+    <Compile Include="Magazine\CreateMagazineViewModel.cs" />
+    <Compile Include="Magazine\IndexMagazineViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Publication\IndexPublicationViewModel.cs" />
   </ItemGroup>
