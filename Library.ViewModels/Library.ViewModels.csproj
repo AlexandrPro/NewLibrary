@@ -45,7 +45,11 @@
     <Compile Include="ApplicationUser\ApplicationUserEditViewModel.cs" />
     <Compile Include="ApplicationUser\ApplicationUserLoginViewModel.cs" />
     <Compile Include="ApplicationUser\ApplicationUserRegisterViewModel.cs" />
+    <Compile Include="Book\CreateBookViewModel.cs" />
+    <Compile Include="Book\IndexBookViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Publication\IndexPublicationViewModel.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
