@@ -31,12 +31,14 @@ namespace Library.Controllers
         }
 
         // GET: Brochure/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
         }
 
         // POST: Brochure/Create
+        [Authorize]
         [HttpPost]
         public ActionResult Create(CreateBrochureViewModel brochure)
         {

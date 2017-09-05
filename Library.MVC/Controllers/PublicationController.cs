@@ -33,12 +33,14 @@ namespace Library.Controllers
         }
 
         // GET: Item/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
         }
 
         // POST: Item/Create
+        [Authorize]
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {

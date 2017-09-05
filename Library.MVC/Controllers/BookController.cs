@@ -32,12 +32,14 @@ namespace Library.Controllers
         }
 
         // GET: Book/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
         }
 
         // POST: Book/Create
+        [Authorize]
         [HttpPost]
         public ActionResult Create(CreateBookViewModel book)
         {

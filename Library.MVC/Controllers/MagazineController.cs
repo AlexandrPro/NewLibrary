@@ -33,12 +33,14 @@ namespace Library.Controllers
         }
 
         // GET: Magazine/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
         }
 
         // POST: Magazine/Create
+        [Authorize]
         [HttpPost]
         public ActionResult Create(CreateMagazineViewModel magazin)
         {
