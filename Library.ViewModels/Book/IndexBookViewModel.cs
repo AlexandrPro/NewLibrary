@@ -7,6 +7,7 @@ namespace Library.ViewModels.Book
 {
     public class IndexBookViewModel
     {
+
         public List<BookViewModel> books { get; set; }
 
         

@@ -80,6 +80,7 @@
     <Compile Include="Services\BrochureService.cs" />
     <Compile Include="Services\MagazineService.cs" />
     <Compile Include="Services\PublicationService.cs" />
+    <Compile Include="Services\PublishingHouseService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Library.DAL\Library.DAL.csproj">

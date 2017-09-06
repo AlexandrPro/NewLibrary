@@ -14,6 +14,8 @@ namespace Library.DAL.EF
         public virtual DbSet<Brochure> Brochures { get; set; }
         public virtual DbSet<Publication> Publications { get; set; }
 
+        public virtual DbSet<PublishingHouse> PublishingHouses { get; set; }
+
         public static ApplicationContext Create()
         {
             return new ApplicationContext();

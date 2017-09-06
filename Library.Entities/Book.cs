@@ -1,6 +1,7 @@
 namespace Library.Entities
 {
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
@@ -20,5 +21,7 @@ namespace Library.Entities
 
         [Required]
         public string PublicationId { get; set; }
+
+        public virtual ICollection<PublishingHouse> Books { get; set; }
     }
 }

@@ -1209,6 +1209,11 @@
     <Content Include="Views\Book\Admin.cshtml" />
     <Content Include="Views\Brochure\Admin.cshtml" />
     <Content Include="Views\Magazine\Admin.cshtml" />
+    <Content Include="Views\PublishingHouse\Index.cshtml" />
+    <Content Include="Views\PublishingHouse\Admin.cshtml" />
+    <Content Include="Views\PublishingHouse\Create.cshtml" />
+    <Content Include="Views\PublishingHouse\Edit.cshtml" />
+    <Content Include="Views\PublishingHouse\Delete.cshtml" />
     <None Include="Views\Shared\_Admin.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Views\ApplicationUser\Login.cshtml" />
@@ -1224,6 +1229,7 @@
     <Compile Include="Controllers\BrochureController.cs" />
     <Compile Include="Controllers\MagazineController.cs" />
     <Compile Include="Controllers\PublicationController.cs" />
+    <Compile Include="Controllers\PublishingHouseController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

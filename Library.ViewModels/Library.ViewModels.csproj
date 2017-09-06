@@ -59,6 +59,10 @@
     <Compile Include="Magazine\IndexMagazineViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Publication\IndexPublicationViewModel.cs" />
+    <Compile Include="PublishingHouse\CreatePublishingHouseViewModel.cs" />
+    <Compile Include="PublishingHouse\DeletePublishingHouseViewModel.cs" />
+    <Compile Include="PublishingHouse\EditPublishingHouseViewModel.cs" />
+    <Compile Include="PublishingHouse\IndexPublishingHouseViewModel.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
