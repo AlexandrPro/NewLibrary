@@ -18,13 +18,19 @@ namespace Library.Controllers
         // GET: Book
         public ActionResult Index()
         {
-            IndexBookViewModel books = bookService.GetAll();
-            return View(books);
+            return View();
         }
         public JsonResult Books_Read([DataSourceRequest] DataSourceRequest request)
         {
             return Json(bookService.GetAll().books.ToDataSourceResult(request));
         }
+
+        public ActionResult Admin()
+        {
+            IndexBookViewModel books = bookService.GetAll();
+            return View(books);
+        }
+
         // GET: Book/Details/5
         public ActionResult Details(Guid id)
         {
@@ -47,7 +53,7 @@ namespace Library.Controllers
             {
                 bookService.Create(bookViewModel);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Admin");
             }
             catch
             {
@@ -72,7 +78,7 @@ namespace Library.Controllers
                 if(bookViewModel != null)
                     bookService.Edit(id, bookViewModel);
                 
-                return RedirectToAction("Index");
+                return RedirectToAction("Admin");
             }
             catch
             {
@@ -96,7 +102,7 @@ namespace Library.Controllers
                 if(bookService.GetByIdDelete(id) != null)
                     bookService.Delete(id);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Admin");
             }
             catch
             {

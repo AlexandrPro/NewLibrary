@@ -24,6 +24,12 @@ namespace Library.Controllers
             return Json(brochureSerivice.GetAll().brochures.ToDataSourceResult(request));
         }
 
+        public ActionResult Admin()
+        {
+            IndexBrochureViewModel brochures = brochureSerivice.GetAll();
+            return View(brochures);
+        }
+
         // GET: Brochure/Details/5
         public ActionResult Details(string id)
         {
@@ -46,7 +52,7 @@ namespace Library.Controllers
             {
                 brochureSerivice.Create(brochure);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Admin");
             }
             catch
             {
@@ -70,7 +76,7 @@ namespace Library.Controllers
                 if (brochureViewModel != null)
                     brochureSerivice.Edit(id, brochureViewModel);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Admin");
             }
             catch
             {
@@ -94,7 +100,7 @@ namespace Library.Controllers
                 if (brochureSerivice.GetByIdDelete(id) != null)
                     brochureSerivice.Delete(id);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Admin");
             }
             catch
             {

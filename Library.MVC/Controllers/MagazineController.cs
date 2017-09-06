@@ -25,6 +25,11 @@ namespace Library.Controllers
         {
             return Json(magazineService.GetAll().magazines.ToDataSourceResult(request));
         }
+        public ActionResult Admin()
+        {
+            IndexMagazineViewModel magazines = magazineService.GetAll();
+            return View(magazines);
+        }
 
         // GET: Magazine/Details/5
         public ActionResult Details(int id)
@@ -48,7 +53,7 @@ namespace Library.Controllers
             {
                 magazineService.Create(magazin);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Admin");
             }
             catch
             {
@@ -72,7 +77,7 @@ namespace Library.Controllers
                 if (magazineViewModel != null)
                     magazineService.Edit(id, magazineViewModel);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Admin");
             }
             catch
             {
@@ -96,7 +101,7 @@ namespace Library.Controllers
                 if (magazineService.GetByIdDelete(id) != null)
                     magazineService.Delete(id);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Admin");
             }
             catch
             {
