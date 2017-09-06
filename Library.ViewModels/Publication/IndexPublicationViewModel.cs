@@ -13,7 +13,7 @@ namespace Library.ViewModels.Publication
     public class PublicationViewModel
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public Guid Id { get; set; }
+        public string Id { get; set; }
 
         [Required]
         [StringLength(200)]

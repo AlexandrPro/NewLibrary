@@ -3,6 +3,7 @@ using Library.BLL.Services;
 using Kendo.Mvc.UI;
 using Kendo.Mvc.Extensions;
 using Library.ViewModels.Book;
+using System;
 
 namespace Library.Controllers
 {
@@ -17,16 +18,15 @@ namespace Library.Controllers
         // GET: Book
         public ActionResult Index()
         {
-            //IndexBookViewModel books = bookService.GetAll();
-            //return View(books);
-            return View();
+            IndexBookViewModel books = bookService.GetAll();
+            return View(books);
         }
         public JsonResult Books_Read([DataSourceRequest] DataSourceRequest request)
         {
             return Json(bookService.GetAll().books.ToDataSourceResult(request));
         }
         // GET: Book/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(Guid id)
         {
             return View();
         }
@@ -41,11 +41,11 @@ namespace Library.Controllers
         // POST: Book/Create
         [Authorize]
         [HttpPost]
-        public ActionResult Create(CreateBookViewModel book)
+        public ActionResult Create(CreateBookViewModel bookViewModel)
         {
             try
             {
-                bookService.Create(book);
+                bookService.Create(bookViewModel);
 
                 return RedirectToAction("Index");
             }
@@ -57,19 +57,22 @@ namespace Library.Controllers
         }
 
         // GET: Book/Edit/5
-        public ActionResult Edit(int id)
+        [HttpGet]
+        public ActionResult Edit(string id)
         {
-            return View();
+            EditBookViewModel book = bookService.GetByIdEdit(id);
+            return View(book);
         }
 
         // POST: Book/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(string id, EditBookViewModel bookViewModel)
         {
             try
             {
-                // TODO: Add update logic here
-
+                if(bookViewModel != null)
+                    bookService.Edit(id, bookViewModel);
+                
                 return RedirectToAction("Index");
             }
             catch
@@ -79,18 +82,20 @@ namespace Library.Controllers
         }
 
         // GET: Book/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(string id)
         {
-            return View();
+            DeleteBookViewModel bookViewModel = bookService.GetByIdDelete(id);
+            return View(bookViewModel);
         }
 
         // POST: Book/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(string id)
         {
             try
             {
-                // TODO: Add delete logic here
+                if(bookService.GetByIdDelete(id) != null)
+                    bookService.Delete(id);
 
                 return RedirectToAction("Index");
             }

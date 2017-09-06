@@ -25,7 +25,6 @@ namespace Library.BLL.Services
             //TODO: validation
             Magazine magazine = new Magazine //TODO: automaper
             {
-                Id = Guid.NewGuid(),
                 CreationDate = DateTime.Now,
                 Name = item.Name,
                 YearOfPublishing = item.YearOfPublishing
@@ -34,7 +33,6 @@ namespace Library.BLL.Services
 
             Publication publication = new Publication
             {
-                Id = Guid.NewGuid(),
                 CreationDate = DateTime.Now,
                 Name = item.Name,
                 Type = "Magazine"

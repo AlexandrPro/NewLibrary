@@ -13,7 +13,7 @@ namespace Library.ViewModels.Magazine
     public class MagazineViewModel
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public Guid Id { get; set; }
+        public string Id { get; set; }
 
         [Required]
         [StringLength(100)]

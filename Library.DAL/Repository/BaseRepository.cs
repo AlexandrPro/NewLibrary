@@ -17,13 +17,14 @@ namespace Library.DAL.Repository
             _entities = context.Set<T>();
         }
 
-        public void Create(T entity)
+        public string Create(T entity)//return entity id
         {
             _entities.Add(entity);
             _context.SaveChanges();
+            return entity.Id;
         }
 
-        public void Delete(int id)
+        public void Delete(string id)
         {
             var entity = GetById(id);
             if (entity != null)
@@ -42,7 +43,7 @@ namespace Library.DAL.Repository
             return _entities.Where(predicate).ToList();
         }
 
-        public T GetById(int id)
+        public T GetById(string id)
         {
             return _entities.Find(id);
         }

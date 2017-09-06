@@ -16,5 +16,8 @@ namespace Library.Entities
 
         [DataType(DataType.Date)]
         public DateTime YearOfPublishing { get; set; }
+
+        [Required]
+        public string PublicationId { get; set; }
     }
 }

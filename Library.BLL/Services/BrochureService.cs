@@ -25,7 +25,6 @@ namespace Library.BLL.Services
             //TODO: validation
             Brochure broshure = new Brochure //TODO: automaper
             {
-                Id = Guid.NewGuid(),
                 CreationDate = DateTime.Now,
                 Name = item.Name,
                 TypeOfCover = item.TypeOfCover,
@@ -35,7 +34,6 @@ namespace Library.BLL.Services
 
             Publication publication = new Publication
             {
-                Id = Guid.NewGuid(),
                 CreationDate = DateTime.Now,
                 Name = item.Name,
                 Type = "Brochure"

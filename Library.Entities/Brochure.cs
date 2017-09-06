@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Library.Entities
@@ -15,5 +16,8 @@ namespace Library.Entities
         public string TypeOfCover { get; set; }
 
         public int NumberOfPages { get; set; }
+
+        [Required]
+        public string PublicationId { get; set; }
     }
 }

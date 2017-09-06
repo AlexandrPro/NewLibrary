@@ -46,6 +46,8 @@
     <Compile Include="ApplicationUser\ApplicationUserLoginViewModel.cs" />
     <Compile Include="ApplicationUser\ApplicationUserRegisterViewModel.cs" />
     <Compile Include="Book\CreateBookViewModel.cs" />
+    <Compile Include="Book\DeleteBookViewModel.cs" />
+    <Compile Include="Book\EditBookViewModel.cs" />
     <Compile Include="Book\IndexBookViewModel.cs" />
     <Compile Include="Brochure\CreateBrochureViewModel.cs" />
     <Compile Include="Brochure\IndexBrochureViewModel.cs" />
