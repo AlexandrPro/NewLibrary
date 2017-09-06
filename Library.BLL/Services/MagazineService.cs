@@ -23,13 +23,6 @@ namespace Library.BLL.Services
         public void Create(CreateMagazineViewModel item)
         {
             //TODO: validation
-            Magazine magazine = new Magazine //TODO: automaper
-            {
-                CreationDate = DateTime.Now,
-                Name = item.Name,
-                YearOfPublishing = item.YearOfPublishing
-            };
-            magazineRepository.Create(magazine);
 
             Publication publication = new Publication
             {
@@ -37,7 +30,16 @@ namespace Library.BLL.Services
                 Name = item.Name,
                 Type = "Magazine"
             };
-            publicationRepository.Create(publication);
+            string publicationId = publicationRepository.Create(publication);
+
+            Magazine magazine = new Magazine //TODO: automaper
+            {
+                CreationDate = DateTime.Now,
+                Name = item.Name,
+                YearOfPublishing = item.YearOfPublishing,
+                PublicationId = publicationId
+            };
+            magazineRepository.Create(magazine);
         }
 
         public IndexMagazineViewModel GetAll()
@@ -53,10 +55,61 @@ namespace Library.BLL.Services
                     Name = item.Name,
                     YearOfPublishing = item.YearOfPublishing
                 });
-                //magazineVMs.Add(magazineVM);
             }
 
             return magazineVM;
+        }
+
+        public EditMagazineViewModel GetByIdEdit(string id)
+        {
+            Magazine magazine = magazineRepository.GetById(id);
+            return new EditMagazineViewModel
+            {
+                Name = magazine.Name,
+                Number = magazine.Number,
+                YearOfPublishing = magazine.YearOfPublishing
+            };
+        }
+
+        public void Edit(string id, EditMagazineViewModel magazineViewModel)
+        {
+            //TODO: validation
+            Magazine magazine = magazineRepository.GetById(id);
+            magazine.Name = magazineViewModel.Name;
+            magazine.Number = magazineViewModel.Number;
+            magazine.YearOfPublishing = magazineViewModel.YearOfPublishing;
+            magazineRepository.Update(magazine);
+
+            Publication publication = publicationRepository.GetById(magazine.PublicationId);
+            publication.Name = magazineViewModel.Name;
+            publicationRepository.Update(publication);
+        }
+
+        public DeleteMagazineViewModel GetByIdDelete(string id)
+        {
+            Magazine magazine = magazineRepository.GetById(id);
+            return new DeleteMagazineViewModel
+            {
+                Name = magazine.Name,
+                Number = magazine.Number,
+                YearOfPublishing = magazine.YearOfPublishing
+            };
+        }
+
+        public void Delete(string id)
+        {
+            try
+            {
+                Magazine magazine = magazineRepository.GetById(id);
+
+                publicationRepository.Delete(magazine.PublicationId);
+
+                magazineRepository.Delete(id);
+            }
+            catch
+            {
+                throw;
+            }
         }
     }
 }

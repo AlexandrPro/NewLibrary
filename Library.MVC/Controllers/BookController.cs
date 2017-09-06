@@ -51,8 +51,7 @@ namespace Library.Controllers
             }
             catch
             {
-                throw;
-                //return View();
+                return View();
             }
         }
 
@@ -60,8 +59,8 @@ namespace Library.Controllers
         [HttpGet]
         public ActionResult Edit(string id)
         {
-            EditBookViewModel book = bookService.GetByIdEdit(id);
-            return View(book);
+            EditBookViewModel bookViewModel = bookService.GetByIdEdit(id);
+            return View(bookViewModel);
         }
 
         // POST: Book/Edit/5

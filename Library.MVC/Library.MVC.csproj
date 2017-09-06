@@ -1847,6 +1847,10 @@
     <Content Include="Views\Magazine\Create.cshtml" />
     <Content Include="Views\Book\Edit.cshtml" />
     <Content Include="Views\Book\Delete.cshtml" />
+    <Content Include="Views\Magazine\Edit.cshtml" />
+    <Content Include="Views\Magazine\Delete.cshtml" />
+    <Content Include="Views\Brochure\Edit.cshtml" />
+    <Content Include="Views\Brochure\Delete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

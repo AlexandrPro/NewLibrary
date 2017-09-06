@@ -23,14 +23,6 @@ namespace Library.BLL.Services
         public void Create(CreateBrochureViewModel item)
         {
             //TODO: validation
-            Brochure broshure = new Brochure //TODO: automaper
-            {
-                CreationDate = DateTime.Now,
-                Name = item.Name,
-                TypeOfCover = item.TypeOfCover,
-                NumberOfPages = item.NumberOfPages
-            };
-            brochureRepository.Create(broshure);
 
             Publication publication = new Publication
             {
@@ -38,7 +30,17 @@ namespace Library.BLL.Services
                 Name = item.Name,
                 Type = "Brochure"
             };
-            publicationRepository.Create(publication);
+            string publicationId = publicationRepository.Create(publication);
+
+            Brochure broshure = new Brochure //TODO: automaper
+            {
+                CreationDate = DateTime.Now,
+                Name = item.Name,
+                TypeOfCover = item.TypeOfCover,
+                NumberOfPages = item.NumberOfPages,
+                PublicationId = publicationId
+            };
+            brochureRepository.Create(broshure);
         }
 
         public IndexBrochureViewModel GetAll()
@@ -58,6 +60,57 @@ namespace Library.BLL.Services
             }
 
             return brochureVM;
+        }
+
+        public EditBrochureViewModel GetByIdEdit(string id)
+        {
+            Brochure brochure = brochureRepository.GetById(id);
+            return new EditBrochureViewModel //TODO: Automaper
+            {
+                Name = brochure.Name,
+                NumberOfPages = brochure.NumberOfPages,
+                TypeOfCover = brochure.TypeOfCover
+            };
+        }
+
+        public void Edit(string id, EditBrochureViewModel brochureViewModel)
+        {
+            Brochure brochure = brochureRepository.GetById(id);
+            brochure.Name = brochureViewModel.Name;
+            brochure.NumberOfPages = brochureViewModel.NumberOfPages;
+            brochure.TypeOfCover = brochureViewModel.TypeOfCover;
+            brochureRepository.Update(brochure);
+            
+            Publication publication = publicationRepository.GetById(brochure.PublicationId);
+            publication.Name = brochureViewModel.Name;
+            publicationRepository.Update(publication);
+        }
+
+        public DeleteBrochureViewModel GetByIdDelete(string id)
+        {
+            Brochure brochure = brochureRepository.GetById(id);
+            return new DeleteBrochureViewModel //TODO: Automaper
+            {
+                Name = brochure.Name,
+                NumberOfPages = brochure.NumberOfPages,
+                TypeOfCover = brochure.TypeOfCover
+            };
+        }
+        
+        public void Delete(string id)
+        {
+            try
+            {
+                Brochure brochure = brochureRepository.GetById(id);
+
+                publicationRepository.Delete(brochure.PublicationId);
+
+                brochureRepository.Delete(id);
+            }
+            catch
+            {
+                throw;
+            }
         }
     }
 }

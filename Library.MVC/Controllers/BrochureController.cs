@@ -25,7 +25,7 @@ namespace Library.Controllers
         }
 
         // GET: Brochure/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(string id)
         {
             return View();
         }
@@ -55,18 +55,20 @@ namespace Library.Controllers
         }
 
         // GET: Brochure/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(string id)
         {
-            return View();
+            EditBrochureViewModel brochureViewModel = brochureSerivice.GetByIdEdit(id);
+            return View(brochureViewModel);
         }
 
         // POST: Brochure/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(string id, EditBrochureViewModel brochureViewModel)
         {
             try
             {
-                // TODO: Add update logic here
+                if (brochureViewModel != null)
+                    brochureSerivice.Edit(id, brochureViewModel);
 
                 return RedirectToAction("Index");
             }
@@ -77,18 +79,20 @@ namespace Library.Controllers
         }
 
         // GET: Brochure/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(string id)
         {
-            return View();
+            DeleteBrochureViewModel brochureViewModel = brochureSerivice.GetByIdDelete(id);
+            return View(brochureViewModel);
         }
 
         // POST: Brochure/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(string id)
         {
             try
             {
-                // TODO: Add delete logic here
+                if (brochureSerivice.GetByIdDelete(id) != null)
+                    brochureSerivice.Delete(id);
 
                 return RedirectToAction("Index");
             }
