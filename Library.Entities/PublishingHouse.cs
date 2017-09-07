@@ -12,7 +12,5 @@ namespace Library.Entities
         [Required]
         [StringLength(500)]
         public string Address { get; set; }
-
-        public virtual ICollection<Book> Books { get; set; }
     }
 }

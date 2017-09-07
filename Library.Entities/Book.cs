@@ -21,7 +21,5 @@ namespace Library.Entities
 
         [Required]
         public string PublicationId { get; set; }
-
-        public virtual ICollection<PublishingHouse> Books { get; set; }
     }
 }

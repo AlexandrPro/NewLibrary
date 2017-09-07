@@ -1,4 +1,5 @@
-﻿using Library.Entities;
+﻿using Library.DAL.EF;
+using Library.Entities;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -8,10 +9,10 @@ namespace Library.DAL.Repository
 {
     public class BaseRepository<T> where T : BaseEntity
     {
-        private readonly DbContext _context;
-        private readonly IDbSet<T> _entities;
+        protected readonly ApplicationContext _context;
+        protected readonly IDbSet<T> _entities;
 
-        public BaseRepository(DbContext context)
+        public BaseRepository(ApplicationContext context)
         {
             _context = context;
             _entities = context.Set<T>();

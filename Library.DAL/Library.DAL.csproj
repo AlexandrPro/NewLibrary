@@ -54,21 +54,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EF\ApplicationContext.cs" />
-    <Compile Include="Migrations\201709060801110_InitialCreate.cs" />
-    <Compile Include="Migrations\201709060801110_InitialCreate.Designer.cs">
-      <DependentUpon>201709060801110_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709061158118_MigrateDB.cs" />
-    <Compile Include="Migrations\201709061158118_MigrateDB.Designer.cs">
-      <DependentUpon>201709061158118_MigrateDB.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709061225087_MigrateDB1.cs" />
-    <Compile Include="Migrations\201709061225087_MigrateDB1.Designer.cs">
-      <DependentUpon>201709061225087_MigrateDB1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\BaseRepository.cs" />
+    <Compile Include="Repository\BookInPublishingHouseRepository.cs" />
     <Compile Include="Repository\BookRepository.cs" />
     <Compile Include="Repository\BrochureRepository.cs" />
     <Compile Include="Repository\MagazineRepository.cs" />
@@ -84,17 +72,6 @@
       <Project>{30675245-4772-4631-9fb2-c0b2788cf641}</Project>
       <Name>Library.Entities</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201709060801110_InitialCreate.resx">
-      <DependentUpon>201709060801110_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709061158118_MigrateDB.resx">
-      <DependentUpon>201709061158118_MigrateDB.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709061225087_MigrateDB1.resx">
-      <DependentUpon>201709061225087_MigrateDB1.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
