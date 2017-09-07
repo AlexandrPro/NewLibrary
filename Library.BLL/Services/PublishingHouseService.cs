@@ -113,8 +113,35 @@ namespace Library.BLL.Services
             {
                 Name = publishingHouse.Name,
                 Address = publishingHouse.Address,
+                //BookIds = GetPublishubgHouseBooks(publishingHouse),
             };
         }
+
+        public List<BookViewModel> GetPublishubgHouseBooks(string Id)
+        {
+            List<Book> books = bookInPublishingHouseRepository.GetPublishingHouseBooks(publishingHouseRepository.GetById(Id));
+            List<BookViewModel> bookViewModels = new List<BookViewModel>();
+            foreach (var item in books)
+            {
+                bookViewModels.Add(new BookViewModel()
+                {
+                    Id = item.Id,
+                    Name = item.Name,
+                });
+            }
+            return bookViewModels;
+        }
+
+        //public List<string> GetPublishubgHouseBooks(string Id)
+        //{
+        //    List<Book> books = bookInPublishingHouseRepository.GetPublishingHouseBooks(publishingHouseRepository.GetById(Id));
+        //    List<string> bookViewModels = new List<string>();
+        //    foreach (var item in books)
+        //    {
+        //        bookViewModels.Add(item.Id);
+        //    }
+        //    return bookViewModels;
+        //}
 
         public void Edit(string id, EditPublishingHouseViewModel publishingHouseViewModel)
         {

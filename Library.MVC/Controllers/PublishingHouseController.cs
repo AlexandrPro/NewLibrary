@@ -94,6 +94,12 @@ namespace Library.Controllers
             }
         }
 
+
+        public JsonResult SelectedBooks_Read(string id, [DataSourceRequest] DataSourceRequest request)
+        {
+            return Json(publishingHouseService.GetPublishubgHouseBooks(id)/*.ToDataSourceResult(request)*/, JsonRequestBehavior.AllowGet);
+        }
+
         // GET: PublishingHouse/Delete/5
         [Authorize]
         public ActionResult Delete(string id)

@@ -35,10 +35,11 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.BookIds, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10" id="MultiSelect">
-                
+            <div class="col-md-10">
+                <select id="multiSelect" multiple="multiple" name="BookIds"></select>
             </div>
         </div>
+
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -57,22 +58,44 @@
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>*@
 @*скрипты выше могут вызывать проблемы с kendo*@
 
-@*<script>
-            $(document).ready(function() {
-                $("#multiSelect").kendoMultiSelect({
-                    placeholder: "Select products...",
-                    dataTextField: "ProductName",
-                    dataValueField: "ProductID",
-                    autoBind: false,
-                    dataSource: {
-                        type: "odata",
-                        serverFiltering: true,
-                        transport: {
-                            read: {
-                                url: "http://localhost:2264/PublishingHouse/Books_Read",
-                            }
+<script>
+    $(document).ready(function () {
+
+        
+
+        alert(JSON.stringify(selectedValues));
+
+            $("#multiSelect").kendoMultiSelect({
+                placeholder: "Select products...",
+                dataTextField: "Name",
+                dataValueField: "Id",
+                dataSource: {
+                    transport: {
+                        read: {
+                            dataType: "json",
+                            url: "/PublishingHouse/Books_Read",
                         }
-                    },
-                });
+                    }
+                },
+                value: selectedValues,
             });
-    </script>*@
+    });
+
+    var selectedValues = $.ajax({
+        type: "POST",
+        dataType: "json",
+        url: "/PublishingHouse/SelectedBooks_Read",
+        data: { id: GetCurentPuclishingHouseId() },
+    });
+    selectedValues.done(function (data) {
+        $("#multiSelect").data("kendoMultiSelect").value(data);
+    });
+
+
+        function GetCurentPuclishingHouseId() {
+            var url = window.location.href;
+            var curentId = url.substr(url.lastIndexOf('/') + 1, url.length);
+            //alert(curentId);
+            return curentId;
+        }
+</script>
