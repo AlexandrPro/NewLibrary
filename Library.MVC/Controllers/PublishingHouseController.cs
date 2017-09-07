@@ -25,6 +25,12 @@ namespace Library.Controllers
             return Json(publishingHouseService.GetAll().publishingHouses.ToDataSourceResult(request));
         }
 
+        public JsonResult Books_Read([DataSourceRequest] DataSourceRequest request)
+        {
+            return Json(publishingHouseService.GetAllBooks().Books/*.ToDataSourceResult(request)*/, JsonRequestBehavior.AllowGet);
+        }
+
+        [Authorize]
         public ActionResult Admin()
         {
             IndexPublishingHouseViewModel publishingHouses = publishingHouseService.GetAll();
@@ -62,6 +68,7 @@ namespace Library.Controllers
         }
 
         // GET: PublishingHouse/Edit/5
+        [Authorize]
         [HttpGet]
         public ActionResult Edit(string id)
         {
@@ -70,6 +77,7 @@ namespace Library.Controllers
         }
 
         // POST: PublishingHouse/Edit/5
+        [Authorize]
         [HttpPost]
         public ActionResult Edit(string id, EditPublishingHouseViewModel publishingHouseViewModel)
         {
@@ -87,6 +95,7 @@ namespace Library.Controllers
         }
 
         // GET: PublishingHouse/Delete/5
+        [Authorize]
         public ActionResult Delete(string id)
         {
             DeletePublishingHouseViewModel publishingHouseViewModel = publishingHouseService.GetByIdDelete(id);
@@ -94,6 +103,7 @@ namespace Library.Controllers
         }
 
         // POST: PublishingHouse/Delete/5
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(string id)
         {

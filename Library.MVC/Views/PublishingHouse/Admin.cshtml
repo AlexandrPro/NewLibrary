@@ -16,6 +16,7 @@
         {
             columns.Bound(c => c.Name);
             columns.Bound(c => c.Address);
+            columns.Bound(c => c.Books);
             columns.Bound(o => o.Name).ClientTemplate(@Html.ActionLink("Edit", "Edit", new { ID = "#=Id#" }).ToHtmlString()).Title("Edit");
             columns.Bound(o => o.Name).ClientTemplate(@Html.ActionLink("Delete", "Delete", new { ID = "#=Id#" }).ToHtmlString()).Title("Delete");
         })

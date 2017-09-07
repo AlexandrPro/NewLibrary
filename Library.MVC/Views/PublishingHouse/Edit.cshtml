@@ -3,6 +3,9 @@
 @{
     ViewBag.Title = "Edit";
 }
+@{
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
 
 <h2>Edit</h2>
 
@@ -31,6 +34,13 @@
         </div>
 
         <div class="form-group">
+            @Html.LabelFor(model => model.BookIds, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10" id="MultiSelect">
+                
+            </div>
+        </div>
+
+        <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
@@ -42,6 +52,27 @@
     @Html.ActionLink("Back to List", "Admin")
 </div>
 
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+@*<script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>*@
+@*скрипты выше могут вызывать проблемы с kendo*@
+
+@*<script>
+            $(document).ready(function() {
+                $("#multiSelect").kendoMultiSelect({
+                    placeholder: "Select products...",
+                    dataTextField: "ProductName",
+                    dataValueField: "ProductID",
+                    autoBind: false,
+                    dataSource: {
+                        type: "odata",
+                        serverFiltering: true,
+                        transport: {
+                            read: {
+                                url: "http://localhost:2264/PublishingHouse/Books_Read",
+                            }
+                        }
+                    },
+                });
+            });
+    </script>*@

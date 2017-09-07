@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Library.ViewModels.PublishingHouse
 {
@@ -11,5 +12,8 @@ namespace Library.ViewModels.PublishingHouse
         [Required]
         [StringLength(500)]
         public string Address { get; set; }
+
+        public List<string> BookIds { get; set; }
+
     }
 }

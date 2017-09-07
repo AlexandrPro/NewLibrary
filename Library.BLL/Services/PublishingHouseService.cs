@@ -12,22 +12,26 @@ namespace Library.BLL.Services
         ApplicationContext db;
         PublishingHouseRepository publishingHouseRepository;
         PublicationRepository publicationRepository;
+        BookInPublishingHouseRepository bookInPublishingHouseRepository;
+        BookRepository bookRepository;
 
         public PublishingHouseService()
         {
             db = new ApplicationContext();
             publishingHouseRepository = new PublishingHouseRepository(db);
             publicationRepository = new PublicationRepository(db);
+            bookInPublishingHouseRepository = new BookInPublishingHouseRepository(db);
+            bookRepository = new BookRepository(db);
         }
 
-        public void Create(CreatePublishingHouseViewModel item)
+        public void Create(CreatePublishingHouseViewModel publishingHouseViewModel)
         {
             //TODO: validation
 
             Publication publication = new Publication
             {
                 CreationDate = DateTime.Now,
-                Name = item.Name,
+                Name = publishingHouseViewModel.Name,
                 Type = "PublishingHouse"
             };
             string publicationId = publicationRepository.Create(publication);
@@ -35,10 +39,38 @@ namespace Library.BLL.Services
             PublishingHouse publishingHouse = new PublishingHouse //TODO: automaper
             {
                 CreationDate = DateTime.Now,
-                Name = item.Name,
-                Address = item.Address,
+                Name = publishingHouseViewModel.Name,
+                Address = publishingHouseViewModel.Address,
             };
             publishingHouseRepository.Create(publishingHouse);
+
+            if (publishingHouseViewModel.BookIds != null)
+            {
+                foreach (var item in publishingHouseViewModel.BookIds)
+                {
+                    bookInPublishingHouseRepository.Create(new BookInPublishingHouse()
+                    {
+                        Book = bookRepository.GetById(item),
+                        PublishingHouse = publishingHouse,
+                    });
+                }
+            }
+        }
+
+        public BookListViewModel GetAllBooks()
+        {
+            IEnumerable<Book> books = bookRepository.GetAll();
+            BookListViewModel bookListViewModels = new BookListViewModel();
+            bookListViewModels.Books = new List<BookViewModel>();
+            foreach (var item in books)
+            {
+                bookListViewModels.Books.Add(new BookViewModel()
+                {
+                    Id = item.Id,
+                    Name = item.Name,
+                });
+            }
+            return bookListViewModels;
         }
 
         public IndexPublishingHouseViewModel GetAll()
@@ -53,10 +85,25 @@ namespace Library.BLL.Services
                     Id = item.Id,
                     Name = item.Name,
                     Address = item.Address,
+                    Books = GetPublishingHouseBooksToString(item),
                 });
             }
 
             return publishingHouseVM;
+        }
+
+        private string GetPublishingHouseBooksToString(PublishingHouse publishingHouse)
+        {
+            List<Book> books = bookInPublishingHouseRepository.GetPublishingHouseBooks(publishingHouse);
+            string booksString = "";
+            foreach (var item in books)
+            {
+                booksString += item.Name + ", ";
+            }
+            if(booksString != "")
+                booksString = booksString.Remove(booksString.Length - 2, 2);
+
+            return booksString;
         }
 
         public EditPublishingHouseViewModel GetByIdEdit(string id)
@@ -85,6 +132,7 @@ namespace Library.BLL.Services
             {
                 Name = publishingHouse.Name,
                 Address = publishingHouse.Address,
+                Books = GetPublishingHouseBooksToString(publishingHouse),
             };
         }
 

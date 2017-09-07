@@ -59,6 +59,7 @@
     <Compile Include="Magazine\IndexMagazineViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Publication\IndexPublicationViewModel.cs" />
+    <Compile Include="PublishingHouse\BookListViewModel.cs" />
     <Compile Include="PublishingHouse\CreatePublishingHouseViewModel.cs" />
     <Compile Include="PublishingHouse\DeletePublishingHouseViewModel.cs" />
     <Compile Include="PublishingHouse\EditPublishingHouseViewModel.cs" />

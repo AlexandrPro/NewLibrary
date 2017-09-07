@@ -28,6 +28,7 @@ namespace CodeRepository.Web
                       "~/Content/site.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/kendo").Include(
+                //"~/Scripts/kendo/kendo.all.js",
                 "~/Scripts/kendo/kendo.all.min.js",
                 // "~/Scripts/kendo/kendo.timezones.min.js", // uncomment if using the Scheduler
                 "~/Scripts/kendo/kendo.aspnetmvc.min.js"));

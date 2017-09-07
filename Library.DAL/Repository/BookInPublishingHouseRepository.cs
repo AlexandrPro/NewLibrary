@@ -32,7 +32,7 @@ namespace Library.DAL.Repository
             List<Book> books = new List<Book>();
             foreach (var item in bookInPublishingHouses)
             {
-                books.Add(_context.Books.Find(item.Book));
+                books.Add(_context.Books.Find(item.Book.Id));
             }
             return books;
         }

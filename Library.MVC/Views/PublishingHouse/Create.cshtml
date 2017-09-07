@@ -3,6 +3,9 @@
 @{
     ViewBag.Title = "Create";
 }
+@{
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
 
 <h2>Create</h2>
 
@@ -31,6 +34,13 @@
         </div>
 
         <div class="form-group">
+            @Html.LabelFor(model => model.BookIds, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select id="multiSelect" multiple="multiple" name="BookIds"></select>
+            </div>
+        </div>
+
+        <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>
@@ -41,3 +51,21 @@
 <div>
     @Html.ActionLink("Back to List", "Admin")
 </div>
+
+<script>
+        $(document).ready(function() {
+            $("#multiSelect").kendoMultiSelect({
+                placeholder: "Select products...",
+                dataTextField: "Name",
+                dataValueField: "Id",
+                dataSource: {
+                    transport: {
+                        read: {
+                            dataType: "json",
+                            url: "/PublishingHouse/Books_Read",
+                        }
+                    }
+                },
+            });
+        });
+</script>

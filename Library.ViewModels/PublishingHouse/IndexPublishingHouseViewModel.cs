@@ -21,5 +21,7 @@ namespace Library.ViewModels.PublishingHouse
         [Required]
         [StringLength(500)]
         public string Address { get; set; }
+
+        public string Books { get; set; }
     }
 }
