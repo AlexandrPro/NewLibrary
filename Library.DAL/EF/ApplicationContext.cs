@@ -7,7 +7,9 @@ namespace Library.DAL.EF
 {
     public class ApplicationContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationContext() : base("NewLibrary") { }
+        public ApplicationContext() : base("NewLibrary") {
+            //ContextOptions.LazyLoadingEnabled = true;
+        }
 
         public virtual DbSet<Book> Books { get; set; }
         public virtual DbSet<Magazine> Magazines { get; set; }
