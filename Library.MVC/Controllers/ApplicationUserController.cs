@@ -154,12 +154,12 @@ namespace Library.MVC.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Что-то пошло не так");
+                    ModelState.AddModelError("", "Something wrong");
                 }
             }
             else
             {
-                ModelState.AddModelError("", "Пользователь не найден");
+                ModelState.AddModelError("", "User not found");
             }
 
             return View(model);

@@ -4,6 +4,7 @@ using Library.Entities;
 using Library.ViewModels.Book;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Library.BLL.Services
 {
@@ -45,21 +46,15 @@ namespace Library.BLL.Services
 
         public IndexBookViewModel GetAll()
         {
-            IEnumerable<Book> books = bookRepository.GetAll();
-            IndexBookViewModel bookVM = new IndexBookViewModel();
-            bookVM.books = new List<BookViewModel>();
-            foreach (Book item in books) //TODO: automaper
+            var bookIndexVM = new IndexBookViewModel();
+            bookIndexVM.books = bookRepository.GetAll().Select(x => new BookViewModel
             {
-                bookVM.books.Add(new BookViewModel
-                {
-                    Id = item.Id,
-                    Author = item.Author,
-                    Name = item.Name,
-                    YearOfPublishing = item.YearOfPublishing
-                });
-            }
-
-            return bookVM;
+                Id = x.Id,
+                Name = x.Name,
+                Author = x.Author,
+                YearOfPublishing = x.YearOfPublishing,
+            }).ToList();
+            return bookIndexVM;
         }
 
         public EditBookViewModel GetByIdEdit(string id)

@@ -9,9 +9,9 @@ namespace Library.BLL.Services
 {
     public class ApplicationUserService : UserManager<ApplicationUser>
     {
-        public ApplicationUserService(IUserStore<ApplicationUser> store) 
-            : base(store) 
-    {
+        public ApplicationUserService(IUserStore<ApplicationUser> store)
+            : base(store)
+        {
         }
         public static ApplicationUserService Create(IdentityFactoryOptions<ApplicationUserService> options,
                                                 IOwinContext context)

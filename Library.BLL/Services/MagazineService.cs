@@ -4,6 +4,7 @@ using Library.Entities;
 using Library.ViewModels.Magazine;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Library.BLL.Services
 {
@@ -44,20 +45,15 @@ namespace Library.BLL.Services
 
         public IndexMagazineViewModel GetAll()
         {
-            IEnumerable<Magazine> magazines = magazineRepository.GetAll();
-            IndexMagazineViewModel magazineVM = new IndexMagazineViewModel();
-            magazineVM.magazines = new List<MagazineViewModel>();
-            foreach (Magazine item in magazines) 
+            var magazineIndexVM = new IndexMagazineViewModel();
+            magazineIndexVM.magazines = magazineRepository.GetAll().Select(x => new MagazineViewModel
             {
-                magazineVM.magazines.Add(new MagazineViewModel
-                {
-                    Id = item.Id,
-                    Name = item.Name,
-                    YearOfPublishing = item.YearOfPublishing
-                });
-            }
-
-            return magazineVM;
+                Id = x.Id,
+                Name = x.Name,
+                Number = x.Number,
+                YearOfPublishing = x.YearOfPublishing,
+            }).ToList();
+            return magazineIndexVM;
         }
 
         public EditMagazineViewModel GetByIdEdit(string id)

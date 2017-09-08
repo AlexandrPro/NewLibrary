@@ -4,6 +4,7 @@ using Library.Entities;
 using Library.ViewModels.Brochure;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Library.BLL.Services
 {
@@ -45,21 +46,16 @@ namespace Library.BLL.Services
 
         public IndexBrochureViewModel GetAll()
         {
-            IEnumerable<Brochure> brochures = brochureRepository.GetAll();
-            IndexBrochureViewModel brochureVM = new IndexBrochureViewModel();
-            brochureVM.brochures = new List<BrochureViewModel>();
-            foreach (Brochure item in brochures)
+            var brochureIndexVM = new IndexBrochureViewModel();
+            brochureIndexVM.brochures = brochureRepository.GetAll().Select(x => new BrochureViewModel
             {
-                brochureVM.brochures.Add(new BrochureViewModel
-                {
-                    Id = item.Id,
-                    Name = item.Name,
-                    TypeOfCover = item.TypeOfCover,
-                    NumberOfPages = item.NumberOfPages
-                });
-            }
+                Id = x.Id,
+                Name = x.Name,
+                TypeOfCover = x.TypeOfCover,
+                NumberOfPages = x.NumberOfPages
 
-            return brochureVM;
+            }).ToList();
+            return brochureIndexVM;
         }
 
         public EditBrochureViewModel GetByIdEdit(string id)

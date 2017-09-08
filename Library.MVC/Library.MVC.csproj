@@ -1209,6 +1209,7 @@
     <Content Include="Scripts\kendo\pako_deflate.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\PublishingHouse\Create.js" />
+    <Content Include="Scripts\PublishingHouse\Edit.js" />
     <Content Include="Views\Book\Admin.cshtml" />
     <Content Include="Views\Brochure\Admin.cshtml" />
     <Content Include="Views\Magazine\Admin.cshtml" />

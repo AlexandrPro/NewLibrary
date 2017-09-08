@@ -76,26 +76,20 @@ namespace Library.BLL.Services
 
         public IndexPublishingHouseViewModel GetAll()
         {
-            IEnumerable<PublishingHouse> publishingHouses = publishingHouseRepository.GetAll();
-            IndexPublishingHouseViewModel publishingHouseVM = new IndexPublishingHouseViewModel();
-            publishingHouseVM.publishingHouses = new List<PublishingHouseViewModel>();
-            foreach (PublishingHouse item in publishingHouses) //TODO: automaper
+            var publishingHouseIndexVM = new IndexPublishingHouseViewModel();
+            publishingHouseIndexVM.publishingHouses = publishingHouseRepository.GetAll().Select(x => new PublishingHouseViewModel
             {
-                publishingHouseVM.publishingHouses.Add(new PublishingHouseViewModel
-                {
-                    Id = item.Id,
-                    Name = item.Name,
-                    Address = item.Address,
-                    Books = GetPublishingHouseBooksToString(item),
-                });
-            }
-
-            return publishingHouseVM;
+                Id = x.Id,
+                Name = x.Name,
+                Address = x.Address,
+                Books = GetPublishingHouseBooksToString(x),
+            }).ToList();
+            return publishingHouseIndexVM;
         }
 
         private string GetPublishingHouseBooksToString(PublishingHouse publishingHouse)
         {
-            List<Book> books = bookInPublishingHouseRepository.GetPublishingHouseBooks(publishingHouse);
+            List<Book> books = bookInPublishingHouseRepository.GetPublishingHouseBooks(publishingHouse.Id);
             string booksString = "";
             foreach (var item in books)
             {
@@ -120,20 +114,17 @@ namespace Library.BLL.Services
 
         public List<BookViewModel> GetPublishubgHouseBooks(string Id)
         {
-            List<Book> books = bookInPublishingHouseRepository.GetPublishingHouseBooks(publishingHouseRepository.GetById(Id));
-            List<BookViewModel> bookViewModels = new List<BookViewModel>();
-            foreach (var item in books)
-            {
-                bookViewModels.Add(new BookViewModel()
+            var bookViewModels = bookInPublishingHouseRepository.GetPublishingHouseBooks(Id).
+                Select(x => new BookViewModel
                 {
-                    Id = item.Id,
-                    Name = item.Name,
-                });
-            }
+                    Id = x.Id, 
+                    Name = x.Name,
+                }).ToList();
+
             return bookViewModels;
         }
 
-        public void Edit(string id, EditPublishingHouseViewModel publishingHouseViewModel)
+        public void Edit(string id, EditPublishingHouseViewModel publishingHouseViewModel)//TODO: refactor
         {
             //TODO: validation
             PublishingHouse publishingHouse = publishingHouseRepository.GetById(id);
@@ -141,65 +132,59 @@ namespace Library.BLL.Services
             publishingHouse.Address = publishingHouseViewModel.Address;
             publishingHouseRepository.Update(publishingHouse);
 
-            List<string> BookIds = null;
-            try
-            {
-                BookIds = publishingHouseViewModel.BookIds;
-            }
-            catch { }
-            if (BookIds == null)
-            {
-                BookIds = new List<string>();
-            }
+            //var isExist = bookInPublishingHouseRepository.GetAll().Where(x => x.Id == id).Any();//TODO: check if repository contains by id
 
-            List<BookInPublishingHouse> bookInPublishingHouses = null;
-            try
+            //if (publishingHouseViewModel.BookIds.Any())//throwing NullPointerException!!!!!!!!!!
+
+            SaveChangedBooksForPublishingHouse(publishingHouseViewModel.BookIds, id);
+            //if (publishingHouseViewModel.BookIds != null)
+            //{
+            //    SaveChangedBooksForPublishingHouse(publishingHouseViewModel.BookIds, id);
+            //}
+        }
+
+        private void SaveChangedBooksForPublishingHouse(List<string> changeBookIds, string id)
+        {
+            if (changeBookIds == null)
             {
-                bookInPublishingHouses = bookInPublishingHouseRepository.Find(b => b.PublishingHouse.Id == publishingHouse.Id).ToList();
+                changeBookIds = new List<string>();
             }
-            catch { }
+            
+            List<BookInPublishingHouse> bookInPublishingHouses = bookInPublishingHouseRepository.Find(b => b.PublishingHouse.Id == id).ToList();
             if (bookInPublishingHouses == null)
             {
                 bookInPublishingHouses = new List<BookInPublishingHouse>();
             }
-            //List<BookInPublishingHouse> bookInPublishingHouses = bookInPublishingHouseRepository.Find(b => b.PublishingHouse.Id == publishingHouse.Id).ToList();
-
-            for (int i = 0; i < bookInPublishingHouses.Count; i++)//remove all not changed books
-            {
-                for (int j = 0; j < BookIds.Count; j++)
-                {
-                    if (bookInPublishingHouses[i].Book.Id == BookIds[j])
-                    {
-                        bookInPublishingHouses.Remove(bookInPublishingHouses[i]);
-                        BookIds.Remove(BookIds[j]);
-                    }
-                }
-            }
-
-            //foreach (var bookInPublishingHouse in bookInPublishingHouses)//remove all not changed books
-            //{
-            //    foreach (var BookId in BookIds)
-            //    {
-            //        if (bookInPublishingHouse.Book.Id == BookId)
-            //        {
-            //            bookInPublishingHouses.Remove(bookInPublishingHouse);
-            //            BookIds.Remove(BookId);
-            //        }
-            //    }
-            //}
-
+            
+            RemoveAllNotChangedBooks(bookInPublishingHouses, changeBookIds);
+            
             foreach (var item in bookInPublishingHouses)
             {
                 bookInPublishingHouseRepository.Delete(item.Id);
             }
 
-            foreach (var item in BookIds)
+            foreach (var item in changeBookIds)
             {
                 bookInPublishingHouseRepository.Create(new BookInPublishingHouse
                 {
                     Book = bookRepository.GetById(item),
-                    PublishingHouse = publishingHouse,
+                    PublishingHouse = publishingHouseRepository.GetById(id),
                 });
+            }
+        }
+
+        private void RemoveAllNotChangedBooks(List<BookInPublishingHouse> bookInPublishingHouses, List<string> changeBookIds)
+        {
+            for (int i = 0; i < bookInPublishingHouses.Count; i++)
+            {
+                for (int j = 0; j < changeBookIds.Count; j++)
+                {
+                    if (bookInPublishingHouses[i].Book.Id == changeBookIds[j])
+                    {
+                        bookInPublishingHouses.Remove(bookInPublishingHouses[i]);
+                        changeBookIds.Remove(changeBookIds[j]);
+                    }
+                }
             }
         }
 

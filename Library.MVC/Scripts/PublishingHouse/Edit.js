@@ -32,6 +32,5 @@ selectedValues.done(function (data) {
 function GetCurentPuclishingHouseId() {
     var url = window.location.href;
     var curentId = url.substr(url.lastIndexOf('/') + 1, url.length);
-    //alert(curentId);
     return curentId;
 }

@@ -3,6 +3,7 @@ using Library.DAL.Repository;
 using Library.Entities;
 using Library.ViewModels.Publication;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Library.BLL.Services
 {
@@ -18,21 +19,14 @@ namespace Library.BLL.Services
 
         public IndexPublicationViewModel GetAll()
         {
-            IEnumerable<Publication> publications = publicationRepository.GetAll();
-            IndexPublicationViewModel publicationVM = new IndexPublicationViewModel();
-            publicationVM.publications = new List<PublicationViewModel>();
-            List<PublicationViewModel> publicationVMs = new List<PublicationViewModel>();
-            foreach (var publication in publications) 
+            var publicationIndexVM = new IndexPublicationViewModel();
+            publicationIndexVM.publications = publicationRepository.GetAll().Select(x => new PublicationViewModel
             {
-                publicationVM.publications.Add(new PublicationViewModel
-                {
-                    Id = publication.Id,
-                    Name = publication.Name,
-                    Type = publication.Type
-                });
-            }
-
-            return publicationVM;
+                Id = x.Id,
+                Name = x.Name,
+                Type = x.Type,
+            }).ToList();
+            return publicationIndexVM;
         }
     }
 }

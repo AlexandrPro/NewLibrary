@@ -15,9 +15,9 @@ namespace Library.DAL.Repository
         {
         }
 
-        public List<PublishingHouse> GetBookPublishingHouses(Book book)
+        public List<PublishingHouse> GetBookPublishingHouses(string Id)
         {
-            List<BookInPublishingHouse> bookInPublishingHouses = _context.BookInPublishingHouses.Where(b => b.Book.Id == book.Id).ToList();
+            List<BookInPublishingHouse> bookInPublishingHouses = _context.BookInPublishingHouses.Where(b => b.Book.Id == Id).ToList();
             List<PublishingHouse> publishingHouses = new List<PublishingHouse>();
             foreach (var item in bookInPublishingHouses)
             {
@@ -26,9 +26,9 @@ namespace Library.DAL.Repository
             return publishingHouses;
         }
 
-        public List<Book> GetPublishingHouseBooks(PublishingHouse publishingHouse)
+        public List<Book> GetPublishingHouseBooks(string Id)
         {
-            List<BookInPublishingHouse> bookInPublishingHouses = _context.BookInPublishingHouses.Where(b => b.PublishingHouse.Id == publishingHouse.Id).ToList();
+            List<BookInPublishingHouse> bookInPublishingHouses = _context.BookInPublishingHouses.Where(b => b.PublishingHouse.Id == Id).ToList();
             List<Book> books = new List<Book>();
             foreach (var item in bookInPublishingHouses)
             {
