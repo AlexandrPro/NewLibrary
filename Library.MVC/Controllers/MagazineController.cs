@@ -6,6 +6,7 @@ using Library.ViewModels.Magazine;
 
 namespace Library.Controllers
 {
+    [Authorize]
     public class MagazineController : Controller
     {
         MagazineService magazineService;
@@ -15,12 +16,14 @@ namespace Library.Controllers
         }
 
         // GET: Magazine
+        [AllowAnonymous]
         public ActionResult Index()
         {
             IndexMagazineViewModel magazines = magazineService.GetAll();
             return View(magazines);
-            return View();
         }
+
+        [AllowAnonymous]
         public JsonResult Magazines_Read([DataSourceRequest] DataSourceRequest request)
         {
             return Json(magazineService.GetAll().magazines.ToDataSourceResult(request));

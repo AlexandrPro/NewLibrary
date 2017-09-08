@@ -7,6 +7,7 @@ using System;
 
 namespace Library.Controllers
 {
+    [Authorize]
     public class PublishingHouseController : Controller
     {
         PublishingHouseService publishingHouseService;
@@ -16,10 +17,13 @@ namespace Library.Controllers
         }
 
         // GET: PublishingHouse
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View();
         }
+
+        [AllowAnonymous]
         public JsonResult PublishingHouses_Read([DataSourceRequest] DataSourceRequest request)
         {
             return Json(publishingHouseService.GetAll().publishingHouses.ToDataSourceResult(request));

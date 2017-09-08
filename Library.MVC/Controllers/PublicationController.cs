@@ -6,6 +6,7 @@ using Kendo.Mvc.UI;
 
 namespace Library.Controllers
 {
+    [Authorize]
     public class PublicationController : Controller
     {
         PublicationService publicationService;
@@ -13,7 +14,9 @@ namespace Library.Controllers
         {
             publicationService = new PublicationService();
         }
+
         // GET: Item
+        [AllowAnonymous]
         public ActionResult Index()
         {
             //IndexItemViewModel items = itemService.GetAll();
@@ -21,6 +24,7 @@ namespace Library.Controllers
             return View();
         }
 
+        [AllowAnonymous]
         public JsonResult Publications_Read([DataSourceRequest] DataSourceRequest request)
         {
             return Json(publicationService.GetAll().publications.ToDataSourceResult(request));

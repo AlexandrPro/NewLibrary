@@ -7,6 +7,7 @@ using System;
 
 namespace Library.Controllers
 {
+    [Authorize]
     public class BookController : Controller
     {
         BookService bookService;
@@ -16,15 +17,18 @@ namespace Library.Controllers
         }
 
         // GET: Book
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View();
         }
+
+        [AllowAnonymous]
         public JsonResult Books_Read([DataSourceRequest] DataSourceRequest request)
         {
             return Json(bookService.GetAll().books.ToDataSourceResult(request));
         }
-
+        
         public ActionResult Admin()
         {
             IndexBookViewModel books = bookService.GetAll();
@@ -38,7 +42,6 @@ namespace Library.Controllers
         }
 
         // GET: Book/Create
-        [Authorize]
         public ActionResult Create()
         {
             return View();

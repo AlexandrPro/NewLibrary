@@ -6,6 +6,7 @@ using Library.ViewModels.Brochure;
 
 namespace Library.Controllers
 {
+    [Authorize]
     public class BrochureController : Controller
     {
         BrochureService brochureSerivice;
@@ -15,10 +16,13 @@ namespace Library.Controllers
         }
 
         // GET: Brochure
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View();
         }
+
+        [AllowAnonymous]
         public JsonResult Brochures_Read([DataSourceRequest] DataSourceRequest request)
         {
             return Json(brochureSerivice.GetAll().brochures.ToDataSourceResult(request));
