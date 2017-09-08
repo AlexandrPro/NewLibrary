@@ -8,6 +8,9 @@ namespace CodeRepository.Web
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+            bundles.Add(new StyleBundle("~/Content.css").Include(
+                      "~/Content/Site.css"));
+
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
@@ -19,13 +22,13 @@ namespace CodeRepository.Web
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js",
+            bundles.Add(new ScriptBundle("~/bundles/bootstrap4.js").Include(
+                      "~/Scripts/bootstrap4.min.js",
                       "~/Scripts/respond.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+            bundles.Add(new StyleBundle("~/Styles/bootstrap4.css").Include(
+                      "~/Content/bootstrap4.min.css",
+                      "~/Content/justified-nav.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/kendo").Include(
                 //"~/Scripts/kendo/kendo.all.js",
