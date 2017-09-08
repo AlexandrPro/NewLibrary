@@ -50,20 +50,4 @@
     @Html.ActionLink("Back to List", "Admin")
 </div>
 
-<script>
-        $(document).ready(function() {
-            $("#multiSelect").kendoMultiSelect({
-                placeholder: "Select products...",
-                dataTextField: "Name",
-                dataValueField: "Id",
-                dataSource: {
-                    transport: {
-                        read: {
-                            dataType: "json",
-                            url: "/PublishingHouse/Books_Read",
-                        }
-                    }
-                },
-            });
-        });
-</script>
+<script src="~/Scripts/PublishingHouse/Create.js" language="javascript" type="text/javascript"></script>
