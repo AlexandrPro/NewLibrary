@@ -163,17 +163,30 @@ namespace Library.BLL.Services
                 bookInPublishingHouses = new List<BookInPublishingHouse>();
             }
             //List<BookInPublishingHouse> bookInPublishingHouses = bookInPublishingHouseRepository.Find(b => b.PublishingHouse.Id == publishingHouse.Id).ToList();
-            foreach (var bookInPublishingHouse in bookInPublishingHouses)//remove all not changed books
+
+            for (int i = 0; i < bookInPublishingHouses.Count; i++)//remove all not changed books
             {
-                foreach (var BookId in BookIds)
+                for (int j = 0; j < BookIds.Count; j++)
                 {
-                    if (bookInPublishingHouse.Book.Id == BookId)
+                    if (bookInPublishingHouses[i].Book.Id == BookIds[j])
                     {
-                        bookInPublishingHouses.Remove(bookInPublishingHouse);
-                        BookIds.Remove(BookId);
+                        bookInPublishingHouses.Remove(bookInPublishingHouses[i]);
+                        BookIds.Remove(BookIds[j]);
                     }
                 }
             }
+
+            //foreach (var bookInPublishingHouse in bookInPublishingHouses)//remove all not changed books
+            //{
+            //    foreach (var BookId in BookIds)
+            //    {
+            //        if (bookInPublishingHouse.Book.Id == BookId)
+            //        {
+            //            bookInPublishingHouses.Remove(bookInPublishingHouse);
+            //            BookIds.Remove(BookId);
+            //        }
+            //    }
+            //}
 
             foreach (var item in bookInPublishingHouses)
             {

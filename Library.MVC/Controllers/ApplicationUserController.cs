@@ -47,7 +47,7 @@ namespace Library.MVC.Controllers
                 IdentityResult result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Login", "Account");
+                    return RedirectToAction("Login", "ApplicationUser");
                 }
                 else
                 {
@@ -87,7 +87,7 @@ namespace Library.MVC.Controllers
                         IsPersistent = true
                     }, claim);
                     if (String.IsNullOrEmpty(returnUrl))
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Index", "Publication");
                     return Redirect(returnUrl);
                 }
             }
@@ -118,10 +118,10 @@ namespace Library.MVC.Controllers
                 IdentityResult result = await UserManager.DeleteAsync(user);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Logout", "Account");
+                    return RedirectToAction("Logout", "ApplicationUser");
                 }
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Publication");
         }
 
         [Authorize]
@@ -133,7 +133,7 @@ namespace Library.MVC.Controllers
                 ApplicationUserEditViewModel model = new ApplicationUserEditViewModel { Email = user.Email };
                 return View(model);
             }
-            return RedirectToAction("Login", "Account");
+            return RedirectToAction("Login", "ApplicationUser");
         }
 
         [Authorize]
@@ -150,7 +150,7 @@ namespace Library.MVC.Controllers
                 IdentityResult result = await UserManager.UpdateAsync(user);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Publication");
                 }
                 else
                 {
