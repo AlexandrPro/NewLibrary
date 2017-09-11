@@ -490,6 +490,8 @@
     <Content Include="Content\Style.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\Book\Admin.js" />
+    <Content Include="Scripts\Book\Index.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\kendo\fonts\DejaVu\DejaVuSans-Bold.ttf" />
@@ -591,6 +593,8 @@
     <Content Include="Content\kendo\kendo.uniform.mobile.min.css.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap4.min.js" />
+    <Content Include="Scripts\Brochure\Admin.js" />
+    <Content Include="Scripts\Brochure\Index.js" />
     <Content Include="Scripts\holder.min.js" />
     <Content Include="Scripts\ie-emulation-modes-warning.js" />
     <Content Include="Scripts\ie10-viewport-bug-workaround.js" />
@@ -1207,9 +1211,13 @@
     <Content Include="Scripts\kendo\messages\kendo.messages.zh-HK.min.js" />
     <Content Include="Scripts\kendo\messages\kendo.messages.zh-TW.min.js" />
     <Content Include="Scripts\kendo\pako_deflate.min.js" />
+    <Content Include="Scripts\Magazine\Admin.js" />
+    <Content Include="Scripts\Magazine\Index.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\PublishingHouse\Admin.js" />
     <Content Include="Scripts\PublishingHouse\Create.js" />
     <Content Include="Scripts\PublishingHouse\Edit.js" />
+    <Content Include="Scripts\PublishingHouse\Index.js" />
     <Content Include="Views\Book\Admin.cshtml" />
     <Content Include="Views\Brochure\Admin.cshtml" />
     <Content Include="Views\Magazine\Admin.cshtml" />
@@ -1879,6 +1887,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Scripts\NewFolder1\" />
     <Folder Include="Views\Default\" />
   </ItemGroup>
   <ItemGroup>

@@ -25,7 +25,7 @@ namespace Library.Controllers
         [AllowAnonymous]
         public JsonResult Brochures_Read([DataSourceRequest] DataSourceRequest request)
         {
-            return Json(brochureSerivice.GetAll().brochures.ToDataSourceResult(request));
+            return Json(brochureSerivice.GetAll().brochures/*.ToDataSourceResult(request)*/, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Admin()

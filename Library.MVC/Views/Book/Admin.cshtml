@@ -5,12 +5,13 @@
     Layout = "~/Views/Shared/_Admin.cshtml";
 }
 
-<h2>Brochures</h2>
+<h2>Books</h2>
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 
-@(Html.Kendo().Grid<Library.ViewModels.Book.BookViewModel>()
+<div id="grid"></div>
+@*@(Html.Kendo().Grid<Library.ViewModels.Book.BookViewModel>()
         .Name("grid")
         .Columns(columns =>
         {
@@ -33,4 +34,6 @@
             .Read(read => read.Action("Books_Read", "Book"))
             .PageSize(20)
         )
-)
+)*@
+
+<script src="~/Scripts/Book/Admin.js" language="javascript" type="text/javascript"></script>

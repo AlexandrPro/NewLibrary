@@ -4,7 +4,10 @@
 
 <h2>Publishing Houses</h2>
 
-@(Html.Kendo().Grid<Library.ViewModels.PublishingHouse.PublishingHouseViewModel>()
+<div id="grid"></div>
+
+
+@*@(Html.Kendo().Grid<Library.ViewModels.PublishingHouse.PublishingHouseViewModel>()
         .Name("grid")
         .Columns(columns =>
         {
@@ -24,4 +27,6 @@
             .Read(read => read.Action("PublishingHouses_Read", "PublishingHouse"))
             .PageSize(20)
         )
-)
+)*@
+
+<script src="~/Scripts/PublishingHouse/Index.js" language="javascript" type="text/javascript"></script>

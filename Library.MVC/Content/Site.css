@@ -1,3 +1,7 @@
 ﻿.yellow-link {
     color: dodgerblue !important;
 }
+
+tr {
+    height: 27px !important;
+}

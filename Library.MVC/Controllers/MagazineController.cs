@@ -26,7 +26,7 @@ namespace Library.Controllers
         [AllowAnonymous]
         public JsonResult Magazines_Read([DataSourceRequest] DataSourceRequest request)
         {
-            return Json(magazineService.GetAll().magazines.ToDataSourceResult(request));
+            return Json(magazineService.GetAll().magazines/*.ToDataSourceResult(request)*/, JsonRequestBehavior.AllowGet);
         }
         public ActionResult Admin()
         {

@@ -16,7 +16,8 @@ namespace Library.Entities
         [StringLength(200)]
         public string Name { get; set; }
 
-        [DataType(DataType.Date)]
+
+        //[DataType(DataType.Date)]
         public DateTime YearOfPublishing { get; set; }
 
         [Required]

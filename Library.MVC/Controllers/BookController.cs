@@ -26,7 +26,7 @@ namespace Library.Controllers
         [AllowAnonymous]
         public JsonResult Books_Read([DataSourceRequest] DataSourceRequest request)
         {
-            return Json(bookService.GetAll().books.ToDataSourceResult(request));
+            return Json(bookService.GetAll().books/*.ToDataSourceResult(request)*/, JsonRequestBehavior.AllowGet);
         }
         
         public ActionResult Admin()

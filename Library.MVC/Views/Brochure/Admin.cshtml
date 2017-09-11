@@ -10,7 +10,9 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 
-@(Html.Kendo().Grid<Library.ViewModels.Brochure.BrochureViewModel>()
+<div id="grid"></div>
+
+@*@(Html.Kendo().Grid<Library.ViewModels.Brochure.BrochureViewModel>()
         .Name("grid")
         .Columns(columns =>
         {
@@ -33,4 +35,6 @@
             .Read(read => read.Action("Brochures_Read", "Brochure"))
             .PageSize(20)
         )
-)
+)*@
+
+<script src="~/Scripts/Brochure/Admin.js" language="javascript" type="text/javascript"></script>

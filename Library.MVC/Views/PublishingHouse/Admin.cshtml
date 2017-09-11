@@ -10,7 +10,10 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 
-@(Html.Kendo().Grid<Library.ViewModels.PublishingHouse.PublishingHouseViewModel>()
+<div id="grid"></div>
+
+
+@*@(Html.Kendo().Grid<Library.ViewModels.PublishingHouse.PublishingHouseViewModel>()
         .Name("grid")
         .Columns(columns =>
         {
@@ -33,4 +36,5 @@
             .Read(read => read.Action("PublishingHouses_Read", "PublishingHouse"))
             .PageSize(20)
         )
-)
+)*@
+<script src="~/Scripts/PublishingHouse/Admin.js" language="javascript" type="text/javascript"></script>
