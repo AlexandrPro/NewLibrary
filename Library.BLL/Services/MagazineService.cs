@@ -43,6 +43,17 @@ namespace Library.BLL.Services
             magazineRepository.Create(magazine);
         }
 
+        public DetailsMagazineViewModel GetByIdDetails(string id)
+        {
+            Magazine magazine = magazineRepository.GetById(id);
+            return new DetailsMagazineViewModel
+            {
+                Name = magazine.Name,
+                Number = magazine.Number,
+                YearOfPublishing = magazine.YearOfPublishing
+            };
+        }
+
         public IndexMagazineViewModel GetAll()
         {
             var magazineIndexVM = new IndexMagazineViewModel();

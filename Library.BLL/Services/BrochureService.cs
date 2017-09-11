@@ -44,6 +44,17 @@ namespace Library.BLL.Services
             brochureRepository.Create(broshure);
         }
 
+        public DetailsBrochureViewModel GetByIdDetails(string id)
+        {
+            Brochure brochure = brochureRepository.GetById(id);
+            return new DetailsBrochureViewModel //TODO: Automaper
+            {
+                Name = brochure.Name,
+                NumberOfPages = brochure.NumberOfPages,
+                TypeOfCover = brochure.TypeOfCover
+            };
+        }
+
         public IndexBrochureViewModel GetAll()
         {
             var brochureIndexVM = new IndexBrochureViewModel();

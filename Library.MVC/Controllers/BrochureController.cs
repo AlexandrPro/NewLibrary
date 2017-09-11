@@ -37,7 +37,8 @@ namespace Library.Controllers
         // GET: Brochure/Details/5
         public ActionResult Details(string id)
         {
-            return View();
+            DetailsBrochureViewModel detailsViewModel = brochureSerivice.GetByIdDetails(id);
+            return View(detailsViewModel);
         }
 
         // GET: Brochure/Create

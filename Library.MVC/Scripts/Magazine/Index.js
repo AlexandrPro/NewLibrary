@@ -28,6 +28,11 @@
             type: "date", format: "{0:yyyy}",
             field: "YearOfPublishing",
             title: "Year of publishing",
+        }, {
+            template: "<a href='/Magazine/Details/#:data.Id#'>" +
+                "Details" +
+                "</a>",
+            title: "Details",
         }]
     });
 });

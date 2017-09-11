@@ -47,14 +47,17 @@
     <Compile Include="ApplicationUser\ApplicationUserRegisterViewModel.cs" />
     <Compile Include="Book\CreateBookViewModel.cs" />
     <Compile Include="Book\DeleteBookViewModel.cs" />
+    <Compile Include="Book\DetailsBookViewModel.cs" />
     <Compile Include="Book\EditBookViewModel.cs" />
     <Compile Include="Book\IndexBookViewModel.cs" />
     <Compile Include="Brochure\CreateBrochureViewModel.cs" />
     <Compile Include="Brochure\DeleteBrochureViewModel.cs" />
+    <Compile Include="Brochure\DetailsBrochureViewModel.cs" />
     <Compile Include="Brochure\EditBrochureViewModel.cs" />
     <Compile Include="Brochure\IndexBrochureViewModel.cs" />
     <Compile Include="Magazine\CreateMagazineViewModel.cs" />
     <Compile Include="Magazine\DeleteMagazineViewModel.cs" />
+    <Compile Include="Magazine\DetailsMagazineViewModel.cs" />
     <Compile Include="Magazine\EditMagazineViewModel.cs" />
     <Compile Include="Magazine\IndexMagazineViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -62,6 +65,7 @@
     <Compile Include="PublishingHouse\BookListViewModel.cs" />
     <Compile Include="PublishingHouse\CreatePublishingHouseViewModel.cs" />
     <Compile Include="PublishingHouse\DeletePublishingHouseViewModel.cs" />
+    <Compile Include="PublishingHouse\DetailsPublishingHouseViewModel.cs" />
     <Compile Include="PublishingHouse\EditPublishingHouseViewModel.cs" />
     <Compile Include="PublishingHouse\IndexPublishingHouseViewModel.cs" />
   </ItemGroup>

@@ -44,6 +44,17 @@ namespace Library.BLL.Services
             bookRepository.Create(book);
         }
 
+        public DetailsBookViewModel GetByIdDetails(string id)
+        {
+            Book book = bookRepository.GetById(id);
+            return new DetailsBookViewModel //TODO: Automaper
+            {
+                Author = book.Author,
+                Name = book.Name,
+                YearOfPublishing = book.YearOfPublishing
+            };
+        }
+
         public IndexBookViewModel GetAll()
         {
             var bookIndexVM = new IndexBookViewModel();

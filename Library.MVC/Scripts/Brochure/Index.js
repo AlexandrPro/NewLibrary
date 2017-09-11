@@ -27,6 +27,11 @@
         }, {
             field: "NumberOfPages",
             title: "Number of pages"
-        }]
+        }, {
+            template: "<a href='/Brochure/Details/#:data.Id#'>" +
+            "Details" +
+            "</a>",
+    title: "Details",
+    }]
     });
 });

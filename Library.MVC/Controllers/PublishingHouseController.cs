@@ -42,9 +42,10 @@ namespace Library.Controllers
         }
 
         // GET: PublishingHouse/Details/5
-        public ActionResult Details(Guid id)
+        public ActionResult Details(string id)
         {
-            return View();
+            DetailsPublishingHouseViewModel publishingHouseViewModel = publishingHouseService.GetByIdDetails(id);
+            return View(publishingHouseViewModel);
         }
 
         // GET: PublishingHouse/Create

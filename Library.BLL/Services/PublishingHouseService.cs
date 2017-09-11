@@ -58,6 +58,17 @@ namespace Library.BLL.Services
             }
         }
 
+        public DetailsPublishingHouseViewModel GetByIdDetails(string id)
+        {
+            PublishingHouse publishingHouse = publishingHouseRepository.GetById(id);
+            return new DetailsPublishingHouseViewModel //TODO: Automaper
+            {
+                Name = publishingHouse.Name,
+                Address = publishingHouse.Address,
+                Books = GetPublishingHouseBooksToString(publishingHouse),
+            };
+        }
+
         public BookListViewModel GetAllBooks()
         {
             IEnumerable<Book> books = bookRepository.GetAll();

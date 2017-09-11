@@ -36,9 +36,10 @@ namespace Library.Controllers
         }
 
         // GET: Book/Details/5
-        public ActionResult Details(Guid id)
+        public ActionResult Details(string id)
         {
-            return View();
+            DetailsBookViewModel bookViewModel = bookService.GetByIdDetails(id);
+            return View(bookViewModel);
         }
 
         // GET: Book/Create

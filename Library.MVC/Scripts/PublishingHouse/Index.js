@@ -27,6 +27,13 @@
         }, {
             field: "Books",
             title: "Books"
-        }, ]
+        }
+        , {
+            template: "<a href='/PublishingHouse/Details/#:data.Id#'>" +
+                "Details" +
+                "</a>",
+            title: "Details",
+        }
+        ]
     });
 });

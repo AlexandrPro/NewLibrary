@@ -29,9 +29,10 @@
             field: "YearOfPublishing",
             title: "Year of publishing",
         }, {
-            type: "button",
-            field: "YearOfPublishing",
-            title: "Year of publishing",
+            template: "<a href='/Book/Details/#:data.Id#'>" +
+                "Details" +
+                "</a>",
+            title: "Details",
         }]
     });
 });
