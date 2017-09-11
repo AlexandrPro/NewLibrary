@@ -28,6 +28,7 @@ namespace Library.Controllers
             return Json(brochureSerivice.GetAll().brochures/*.ToDataSourceResult(request)*/, JsonRequestBehavior.AllowGet);
         }
 
+
         public ActionResult Admin()
         {
             IndexBrochureViewModel brochures = brochureSerivice.GetAll();
@@ -35,6 +36,7 @@ namespace Library.Controllers
         }
 
         // GET: Brochure/Details/5
+        [AllowAnonymous]
         public ActionResult Details(string id)
         {
             DetailsBrochureViewModel detailsViewModel = brochureSerivice.GetByIdDetails(id);

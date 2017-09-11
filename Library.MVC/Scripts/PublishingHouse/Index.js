@@ -20,19 +20,23 @@
         },
         columns: [{
             field: "Name",
-            title: "Name"
+            title: "Name",
+            width: "200px"
         }, {
             field: "Address",
-            title: "Address"
+            title: "Address",
+            width: "200px"
         }, {
             field: "Books",
-            title: "Books"
+            title: "Books",
+            width: "200px"
         }
         , {
             template: "<a href='/PublishingHouse/Details/#:data.Id#'>" +
                 "Details" +
                 "</a>",
             title: "Details",
+            width: "100px"
         }
         ]
     });

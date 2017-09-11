@@ -20,23 +20,28 @@
         },
         columns: [ {
             field: "Name",
-            title: "Name"
+            title: "Name",
+            width: "200px"
         }, {
             field: "TypeOfCover",
-            title: "Type of cover"
+            title: "Type of cover",
+            width: "200px"
         }, {
             field: "NumberOfPages",
-            title: "Number of pages"
+            title: "Number of pages",
+            width: "200px"
         }, {
             template: "<a href='/Brochure/Edit/#:data.Id#'>" +
                 "Edit" +
                 "</a>",
             title: "Edit",
+                width: "100px"
         }, {
             template: "<a href='/Brochure/Delete/#:data.Id#'>" +
                 "Delete" +
                 "</a>",
             title: "Delete",
+            width: "100px"
         }]
     });
 });

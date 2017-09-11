@@ -42,6 +42,7 @@ namespace Library.Controllers
         }
 
         // GET: PublishingHouse/Details/5
+        [AllowAnonymous]
         public ActionResult Details(string id)
         {
             DetailsPublishingHouseViewModel publishingHouseViewModel = publishingHouseService.GetByIdDetails(id);

@@ -35,6 +35,7 @@ namespace Library.Controllers
         }
 
         // GET: Magazine/Details/5
+        [AllowAnonymous]
         public ActionResult Details(string id)
         {
             DetailsMagazineViewModel magazineViewModel = magazineService.GetByIdDetails(id);

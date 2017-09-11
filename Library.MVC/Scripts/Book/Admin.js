@@ -20,24 +20,29 @@
         },
         columns: [{
             field: "Author",
-            title: "Author"
+            title: "Author",
+            width: "200px"
         }, {
             field: "Name",
-            title: "Name"
+            title: "Name",
+            width: "200px"
         }, {
             type: "date", format: "{0:yyyy}",
             field: "YearOfPublishing",
             title: "Year of publishing",
+            width: "200px"
         }, {
             template: "<a href='/Book/Edit/#:data.Id#'>" +
                 "Edit" + 
                 "</a>",
             title: "Edit",
+            width: "100px"
         }, {
             template: "<a href='/Book/Delete/#:data.Id#'>" +
                 "Delete" +
                 "</a>",
             title: "Delete",
+            width: "100px"
         }]
     });
 });

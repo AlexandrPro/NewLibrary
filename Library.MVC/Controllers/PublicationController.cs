@@ -31,6 +31,7 @@ namespace Library.Controllers
         }
 
         // GET: Item/Details/5
+        [AllowAnonymous]
         public ActionResult Details(int id)
         {
             return View();

@@ -20,23 +20,28 @@
         },
         columns: [{
             field: "Name",
-            title: "Name"
+            title: "Name",
+            width: "200px"
         }, {
             field: "Address",
-            title: "Address"
+            title: "Address",
+            width: "200px"
         }, {
             field: "Books",
-            title: "Books"
+            title: "Books",
+            width: "200px"
         }, {
             template: "<a href='/PublishingHouse/Edit/#:data.Id#'>" +
                 "Edit" +
                 "</a>",
             title: "Edit",
+            width: "100px"
         }, {
             template: "<a href='/PublishingHouse/Delete/#:data.Id#'>" +
                 "Delete" +
                 "</a>",
             title: "Delete",
+            width: "100px"
         }]
     });
 });

@@ -1218,6 +1218,7 @@
     <Content Include="Scripts\PublishingHouse\Create.js" />
     <Content Include="Scripts\PublishingHouse\Edit.js" />
     <Content Include="Scripts\PublishingHouse\Index.js" />
+    <Content Include="Scripts\Shared\_Admin.js" />
     <Content Include="Views\Book\Admin.cshtml" />
     <Content Include="Views\Brochure\Admin.cshtml" />
     <Content Include="Views\Magazine\Admin.cshtml" />

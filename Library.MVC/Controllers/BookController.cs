@@ -36,6 +36,7 @@ namespace Library.Controllers
         }
 
         // GET: Book/Details/5
+        [AllowAnonymous]
         public ActionResult Details(string id)
         {
             DetailsBookViewModel bookViewModel = bookService.GetByIdDetails(id);
