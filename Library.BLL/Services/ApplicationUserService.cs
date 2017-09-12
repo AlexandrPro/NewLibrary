@@ -1,4 +1,4 @@
-﻿using Library.DAL.EF;
+﻿using Library.DataAccess.EF;
 using Library.Entities;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;

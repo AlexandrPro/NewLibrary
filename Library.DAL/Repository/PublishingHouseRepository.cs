@@ -1,7 +1,7 @@
 ﻿using Library.Entities;
-using Library.DAL.EF;
+using Library.DataAccess.EF;
 
-namespace Library.DAL.Repository
+namespace Library.DataAccess.Repository
 {
     public class PublishingHouseRepository : BaseRepository<PublishingHouse>
     {

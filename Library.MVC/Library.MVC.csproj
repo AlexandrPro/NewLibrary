@@ -1902,9 +1902,9 @@
       <Project>{b0714c3f-8581-4a5c-afb8-3df332004ca4}</Project>
       <Name>Library.BLL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Library.DAL\Library.DAL.csproj">
+    <ProjectReference Include="..\Library.DAL\Library.DataAccess.csproj">
       <Project>{45448db5-ce7a-42b9-a533-847adb21dad7}</Project>
-      <Name>Library.DAL</Name>
+      <Name>Library.DataAccess</Name>
     </ProjectReference>
     <ProjectReference Include="..\Library.Entities\Library.Entities.csproj">
       <Project>{30675245-4772-4631-9fb2-c0b2788cf641}</Project>

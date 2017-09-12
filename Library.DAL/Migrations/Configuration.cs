@@ -5,7 +5,7 @@ namespace Library.DAL.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Library.DAL.EF.ApplicationContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Library.DataAccess.EF.ApplicationContext>
     {
         public Configuration()
         {
@@ -13,7 +13,7 @@ namespace Library.DAL.Migrations
             ContextKey = "Library.DAL.EF.ApplicationContext";
         }
 
-        protected override void Seed(Library.DAL.EF.ApplicationContext context)
+        protected override void Seed(Library.DataAccess.EF.ApplicationContext context)
         {
             //  This method will be called after migrating to the latest version.
 

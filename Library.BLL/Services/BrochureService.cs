@@ -1,5 +1,5 @@
-﻿using Library.DAL.EF;
-using Library.DAL.Repository;
+﻿using Library.DataAccess.EF;
+using Library.DataAccess.Repository;
 using Library.Entities;
 using Library.ViewModels.Brochure;
 using System;

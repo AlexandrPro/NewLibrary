@@ -1,4 +1,4 @@
-﻿using Library.DAL.EF;
+﻿using Library.DataAccess.EF;
 using Library.Entities;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Library.DAL.Repository
+namespace Library.DataAccess.Repository
 {
     public class BaseRepository<TEntity> where TEntity : BaseEntity
     {

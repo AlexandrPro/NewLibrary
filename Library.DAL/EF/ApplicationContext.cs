@@ -3,7 +3,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Library.Entities;
 
 
-namespace Library.DAL.EF
+namespace Library.DataAccess.EF
 {
     public class ApplicationContext : IdentityDbContext<ApplicationUser>
     {

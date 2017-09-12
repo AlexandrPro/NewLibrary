@@ -1,8 +1,8 @@
-﻿using Library.DAL.EF;
+﻿using Library.DataAccess.EF;
 using Library.Entities;
 using System.Data.Entity;
 
-namespace Library.DAL.Repository
+namespace Library.DataAccess.Repository
 {
     public class BookRepository : BaseRepository<Book>
     {

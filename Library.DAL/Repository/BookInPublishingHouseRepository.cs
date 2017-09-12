@@ -4,12 +4,12 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Library.DAL.EF;
+using Library.DataAccess.EF;
 using Library.Entities;
 using System.Configuration;
 using System.Data.SqlClient;
 
-namespace Library.DAL.Repository
+namespace Library.DataAccess.Repository
 {
     public class BookInPublishingHouseRepository : BaseRepository<BookInPublishingHouse> 
     {
