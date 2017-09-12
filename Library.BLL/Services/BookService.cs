@@ -105,7 +105,7 @@ namespace Library.BLL.Services
 
         private string GetBookPublishingHousesToString(Book book)
         {
-            List<PublishingHouse> publishingHouses = bookInPublishingHouseRepository.GetBookPublishingHouses(book.Id);
+            List<PublishingHouse> publishingHouses = bookInPublishingHouseRepository.GetBookPublishingHousesADO(book.Id);
             string publishingHousesString = "";
             foreach (var item in publishingHouses)
             {
@@ -130,7 +130,7 @@ namespace Library.BLL.Services
 
         public List<PublishingHouseViewModel> GetBookPublishubgHouses(string Id)
         {
-            var publishingHouseViewModels = bookInPublishingHouseRepository.GetBookPublishingHouses(Id).
+            var publishingHouseViewModels = bookInPublishingHouseRepository.GetBookPublishingHousesADO(Id).
                 Select(x => new PublishingHouseViewModel
                 {
                     Id = x.Id,

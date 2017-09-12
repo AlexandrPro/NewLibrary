@@ -60,7 +60,7 @@ namespace Library.BLL.Services
 
         private string GetPublishingHouseBooksToString(PublishingHouse publishingHouse)
         {
-            List<Book> books = bookInPublishingHouseRepository.GetPublishingHouseBooks(publishingHouse.Id);
+            List<Book> books = bookInPublishingHouseRepository.GetPublishingHouseBooksADO(publishingHouse.Id);
             string booksString = "";
             foreach (var item in books)
             {
