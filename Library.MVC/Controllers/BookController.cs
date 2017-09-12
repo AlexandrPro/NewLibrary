@@ -28,7 +28,12 @@ namespace Library.Controllers
         {
             return Json(bookService.GetAll().books/*.ToDataSourceResult(request)*/, JsonRequestBehavior.AllowGet);
         }
-        
+
+        public JsonResult PublishingHouses_Read([DataSourceRequest] DataSourceRequest request)
+        {
+            return Json(bookService.GetAllPublishingHouses().publishingHouses/*.ToDataSourceResult(request)*/, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult Admin()
         {
             IndexBookViewModel books = bookService.GetAll();
@@ -89,6 +94,11 @@ namespace Library.Controllers
             {
                 return View();
             }
+        }
+
+        public JsonResult SelectedPublishingHouses_Read(string id, [DataSourceRequest] DataSourceRequest request)
+        {
+            return Json(bookService.GetBookPublishubgHouses(id)/*.ToDataSourceResult(request)*/, JsonRequestBehavior.AllowGet);
         }
 
         // GET: Book/Delete/5

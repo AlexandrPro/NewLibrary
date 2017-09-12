@@ -15,5 +15,7 @@ namespace Library.ViewModels.Book
 
         [DataType(DataType.Date)]
         public DateTime YearOfPublishing { get; set; }
+
+        public string PublishingHouses { get; set; }
     }
 }

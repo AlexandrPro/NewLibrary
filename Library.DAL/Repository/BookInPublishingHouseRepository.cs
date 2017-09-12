@@ -21,7 +21,7 @@ namespace Library.DAL.Repository
             List<PublishingHouse> publishingHouses = new List<PublishingHouse>();
             foreach (var item in bookInPublishingHouses)
             {
-                publishingHouses.Add(Context.PublishingHouses.Find(item.PublishingHouse));
+                publishingHouses.Add(Context.PublishingHouses.Find(item.PublishingHouse.Id));
             }
             return publishingHouses;
         }

@@ -50,6 +50,7 @@
     <Compile Include="Book\DetailsBookViewModel.cs" />
     <Compile Include="Book\EditBookViewModel.cs" />
     <Compile Include="Book\IndexBookViewModel.cs" />
+    <Compile Include="Book\PublishingHouseListViewModel.cs" />
     <Compile Include="Brochure\CreateBrochureViewModel.cs" />
     <Compile Include="Brochure\DeleteBrochureViewModel.cs" />
     <Compile Include="Brochure\DetailsBrochureViewModel.cs" />
@@ -62,7 +63,6 @@
     <Compile Include="Magazine\IndexMagazineViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Publication\IndexPublicationViewModel.cs" />
-    <Compile Include="PublishingHouse\BookListViewModel.cs" />
     <Compile Include="PublishingHouse\CreatePublishingHouseViewModel.cs" />
     <Compile Include="PublishingHouse\DeletePublishingHouseViewModel.cs" />
     <Compile Include="PublishingHouse\DetailsPublishingHouseViewModel.cs" />

@@ -32,6 +32,10 @@
             title: "Year of publishing",
             width: "200px"
         }, {
+            field: "PublishingHouses",
+            title: "Publishing Houses",
+            width: "200px"
+        }, {
             template: "<a href='/Book/Details/#:data.Id#'>" +
                 "Details" +
                 "</a>",

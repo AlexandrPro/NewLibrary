@@ -14,6 +14,5 @@ namespace Library.ViewModels.PublishingHouse
         public string Address { get; set; }
 
         public List<string> BookIds { get; set; }
-
     }
 }

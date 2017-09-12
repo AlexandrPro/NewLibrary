@@ -27,6 +27,8 @@ namespace Library.ViewModels.Book
         public string Name { get; set; }
 
         public DateTime YearOfPublishing { get; set; }
+
+        public string PublishingHouses { get; set; }
     }
 
 }

@@ -37,7 +37,6 @@
                 "</a>",
             title: "Details",
             width: "100px"
-        }
-        ]
+        }]
     });
 });
