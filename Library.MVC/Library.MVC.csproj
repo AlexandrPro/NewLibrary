@@ -1214,6 +1214,7 @@
     <Content Include="Scripts\Magazine\Admin.js" />
     <Content Include="Scripts\Magazine\Index.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\Publications\Index.js" />
     <Content Include="Scripts\PublishingHouse\Admin.js" />
     <Content Include="Scripts\PublishingHouse\Create.js" />
     <Content Include="Scripts\PublishingHouse\Edit.js" />
@@ -1892,7 +1893,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Scripts\NewFolder1\" />
     <Folder Include="Views\Default\" />
   </ItemGroup>
   <ItemGroup>

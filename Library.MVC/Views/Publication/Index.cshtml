@@ -4,7 +4,9 @@
 
 <h2>Publications</h2>
 
-@(Html.Kendo().Grid<Library.ViewModels.Publication.PublicationViewModel>()
+<div id="grid"></div>
+
+@*@(Html.Kendo().Grid<Library.ViewModels.Publication.PublicationViewModel>()
         .Name("grid")
         .Columns(columns =>
         {
@@ -24,4 +26,6 @@
             .Read(read => read.Action("Publications_Read", "Publication"))
             .PageSize(20)
         )
-)
+)*@
+
+<script src="~/Scripts/Publications/Index.js" language="javascript" type="text/javascript"></script>

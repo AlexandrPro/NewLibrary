@@ -1,15 +1,4 @@
-﻿//$(document).ready(function () {
-//    $('#menu-toggle').click(function (e) {
-//        e.preventDefault();
-//        $(".sidebar").toggleClass("active");
-//        if (jQuery('.sidebar').css('display', 'none')) {
-//            jQuery('.sidebar').css('display', 'block');
-//        }
-//        else {
-//            jQuery('.sidebar').css('display', 'none');
-//        }
-//    });
-//});
+﻿
 $("#menu-toggle").click(function (e) {
     e.preventDefault();
     $("#wrapper").toggleClass("toggled");

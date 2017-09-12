@@ -27,7 +27,7 @@ namespace Library.Controllers
         [AllowAnonymous]
         public JsonResult Publications_Read([DataSourceRequest] DataSourceRequest request)
         {
-            return Json(publicationService.GetAll().publications.ToDataSourceResult(request));
+            return Json(publicationService.GetAll().publications/*.ToDataSourceResult(request)*/, JsonRequestBehavior.AllowGet);
         }
 
         // GET: Item/Details/5
