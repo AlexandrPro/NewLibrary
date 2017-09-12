@@ -5,7 +5,7 @@ using Library.ViewModels.Publication;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Library.BLL.Services
+namespace Library.Services
 {
     public class PublicationService
     {

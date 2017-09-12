@@ -1,6 +1,6 @@
 ﻿using Kendo.Mvc.UI;
 using Kendo.Mvc.Extensions;
-using Library.BLL.Services;
+using Library.Services;
 using System.Web.Mvc;
 using Library.ViewModels.Magazine;
 

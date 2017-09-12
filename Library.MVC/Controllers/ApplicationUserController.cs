@@ -8,7 +8,7 @@ using Microsoft.Owin.Security;
 using System.Security.Claims;
 using Library.ViewModels.ApplicationUser;
 using Library.Entities;
-using Library.BLL.Services;
+using Library.Services;
 
 namespace Library.MVC.Controllers
 {

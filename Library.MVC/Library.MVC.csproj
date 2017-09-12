@@ -1898,9 +1898,9 @@
     <Folder Include="Views\Default\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Library.BLL\Library.BLL.csproj">
+    <ProjectReference Include="..\Library.BLL\Library.Services.csproj">
       <Project>{b0714c3f-8581-4a5c-afb8-3df332004ca4}</Project>
-      <Name>Library.BLL</Name>
+      <Name>Library.Services</Name>
     </ProjectReference>
     <ProjectReference Include="..\Library.DAL\Library.DataAccess.csproj">
       <Project>{45448db5-ce7a-42b9-a533-847adb21dad7}</Project>

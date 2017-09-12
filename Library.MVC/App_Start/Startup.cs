@@ -3,7 +3,7 @@ using Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.AspNet.Identity;
 using Library.DataAccess.EF;
-using Library.BLL.Services;
+using Library.Services;
 
 [assembly: OwinStartup(typeof(AspNetIdentityApp.Startup))]
 
