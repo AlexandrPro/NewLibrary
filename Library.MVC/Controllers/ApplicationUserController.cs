@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using Library.MVC.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -12,6 +11,7 @@ using Microsoft.Owin.Security;
 using System.Security.Claims;
 using Library.ViewModels.ApplicationUser;
 using Library.Entities;
+using Library.BLL.Services;
 
 namespace Library.MVC.Controllers
 {

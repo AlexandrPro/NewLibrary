@@ -2,8 +2,8 @@
 using Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.AspNet.Identity;
-using Library.MVC.Models;
 using Library.DAL.EF;
+using Library.BLL.Services;
 
 [assembly: OwinStartup(typeof(AspNetIdentityApp.Startup))]
 

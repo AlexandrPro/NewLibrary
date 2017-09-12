@@ -31,7 +31,7 @@ namespace Library.BLL.Services
                 Name = item.Name,
                 Type = "Book"
             };
-            string publicationId = publicationRepository.Create(publication);
+            publicationRepository.Insert(publication);
 
             Book book = new Book //TODO: automaper
             {
@@ -39,14 +39,16 @@ namespace Library.BLL.Services
                 Author = item.Author,
                 Name = item.Name,
                 YearOfPublishing = item.YearOfPublishing,
-                PublicationId = publicationId
+                PublicationId = publication.Id
             };
-            bookRepository.Create(book);
+            bookRepository.Insert(book);
+
+            SaveChanges();
         }
 
         public DetailsBookViewModel GetByIdDetails(string id)
         {
-            Book book = bookRepository.GetById(id);
+            Book book = bookRepository.GetByID(id);
             return new DetailsBookViewModel //TODO: Automaper
             {
                 Author = book.Author,
@@ -58,7 +60,7 @@ namespace Library.BLL.Services
         public IndexBookViewModel GetAll()
         {
             var bookIndexVM = new IndexBookViewModel();
-            bookIndexVM.books = bookRepository.GetAll().Select(x => new BookViewModel
+            bookIndexVM.books = bookRepository.Get().Select(x => new BookViewModel
             {
                 Id = x.Id,
                 Name = x.Name,
@@ -70,7 +72,7 @@ namespace Library.BLL.Services
 
         public EditBookViewModel GetByIdEdit(string id)
         {
-            Book book = bookRepository.GetById(id);
+            Book book = bookRepository.GetByID(id);
             return new EditBookViewModel //TODO: Automaper
             {
                 Author = book.Author,
@@ -82,20 +84,22 @@ namespace Library.BLL.Services
         public void Edit(string id, EditBookViewModel bookViewModel)
         {
             //TODO: validation
-            Book book = bookRepository.GetById(id);
+            Book book = bookRepository.GetByID(id);
             book.Name = bookViewModel.Name;
             book.YearOfPublishing = bookViewModel.YearOfPublishing;
             book.Author = bookViewModel.Author;
             bookRepository.Update(book);
 
-            Publication publication = publicationRepository.GetById(book.PublicationId);
+            Publication publication = publicationRepository.GetByID(book.PublicationId);
             publication.Name = bookViewModel.Name;
             publicationRepository.Update(publication);
+
+            SaveChanges();
         }
 
         public DeleteBookViewModel GetByIdDelete(string id)
         {
-            Book book = bookRepository.GetById(id);
+            Book book = bookRepository.GetByID(id);
             return new DeleteBookViewModel
             {
                 Author = book.Author,
@@ -108,16 +112,24 @@ namespace Library.BLL.Services
         {
             try
             {
-                Book book = bookRepository.GetById(id);
+                Book book = bookRepository.GetByID(id);
 
                 publicationRepository.Delete(book.PublicationId);
 
                 bookRepository.Delete(id);
+
+                SaveChanges();
             }
             catch
             {
                 throw;
             }
+        }
+
+        private void SaveChanges()
+        {
+            bookRepository.Save();
+            publicationRepository.Save();
         }
     }
 }

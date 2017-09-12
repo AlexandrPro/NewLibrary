@@ -12,7 +12,6 @@ namespace Library.BLL.Services
     {
         ApplicationContext db;
         PublishingHouseRepository publishingHouseRepository;
-        PublicationRepository publicationRepository;
         BookInPublishingHouseRepository bookInPublishingHouseRepository;
         BookRepository bookRepository;
 
@@ -20,7 +19,6 @@ namespace Library.BLL.Services
         {
             db = new ApplicationContext();
             publishingHouseRepository = new PublishingHouseRepository(db);
-            publicationRepository = new PublicationRepository(db);
             bookInPublishingHouseRepository = new BookInPublishingHouseRepository(db);
             bookRepository = new BookRepository(db);
         }
@@ -28,39 +26,32 @@ namespace Library.BLL.Services
         public void Create(CreatePublishingHouseViewModel publishingHouseViewModel)
         {
             //TODO: validation
-
-            Publication publication = new Publication
-            {
-                CreationDate = DateTime.Now,
-                Name = publishingHouseViewModel.Name,
-                Type = "PublishingHouse"
-            };
-            string publicationId = publicationRepository.Create(publication);
-
             PublishingHouse publishingHouse = new PublishingHouse //TODO: automaper
             {
                 CreationDate = DateTime.Now,
                 Name = publishingHouseViewModel.Name,
                 Address = publishingHouseViewModel.Address,
             };
-            publishingHouseRepository.Create(publishingHouse);
+            publishingHouseRepository.Insert(publishingHouse);
 
             if (publishingHouseViewModel.BookIds != null)
             {
                 foreach (var item in publishingHouseViewModel.BookIds)
                 {
-                    bookInPublishingHouseRepository.Create(new BookInPublishingHouse()
+                    bookInPublishingHouseRepository.Insert(new BookInPublishingHouse()
                     {
-                        Book = bookRepository.GetById(item),
+                        Book = bookRepository.GetByID(item),
                         PublishingHouse = publishingHouse,
                     });
                 }
             }
+
+            SaveChanges();
         }
 
         public DetailsPublishingHouseViewModel GetByIdDetails(string id)
         {
-            PublishingHouse publishingHouse = publishingHouseRepository.GetById(id);
+            PublishingHouse publishingHouse = publishingHouseRepository.GetByID(id);
             return new DetailsPublishingHouseViewModel //TODO: Automaper
             {
                 Name = publishingHouse.Name,
@@ -71,7 +62,7 @@ namespace Library.BLL.Services
 
         public BookListViewModel GetAllBooks()
         {
-            IEnumerable<Book> books = bookRepository.GetAll();
+            IEnumerable<Book> books = bookRepository.Get();//todo: new Get and new posibilities
             BookListViewModel bookListViewModels = new BookListViewModel();
             bookListViewModels.Books = new List<BookViewModel>();
             foreach (var item in books)
@@ -88,7 +79,7 @@ namespace Library.BLL.Services
         public IndexPublishingHouseViewModel GetAll()
         {
             var publishingHouseIndexVM = new IndexPublishingHouseViewModel();
-            publishingHouseIndexVM.publishingHouses = publishingHouseRepository.GetAll().Select(x => new PublishingHouseViewModel
+            publishingHouseIndexVM.publishingHouses = publishingHouseRepository.Get().Select(x => new PublishingHouseViewModel
             {
                 Id = x.Id,
                 Name = x.Name,
@@ -114,7 +105,7 @@ namespace Library.BLL.Services
 
         public EditPublishingHouseViewModel GetByIdEdit(string id)
         {
-            PublishingHouse publishingHouse = publishingHouseRepository.GetById(id);
+            PublishingHouse publishingHouse = publishingHouseRepository.GetByID(id);
             return new EditPublishingHouseViewModel //TODO: Automaper
             {
                 Name = publishingHouse.Name,
@@ -138,30 +129,24 @@ namespace Library.BLL.Services
         public void Edit(string id, EditPublishingHouseViewModel publishingHouseViewModel)//TODO: refactor
         {
             //TODO: validation
-            PublishingHouse publishingHouse = publishingHouseRepository.GetById(id);
+            PublishingHouse publishingHouse = publishingHouseRepository.GetByID(id);
             publishingHouse.Name = publishingHouseViewModel.Name;
             publishingHouse.Address = publishingHouseViewModel.Address;
             publishingHouseRepository.Update(publishingHouse);
 
-            //var isExist = bookInPublishingHouseRepository.GetAll().Where(x => x.Id == id).Any();//TODO: check if repository contains by id
+            AddChangedBooksForPublishingHouse(publishingHouseViewModel.BookIds, id);
 
-            //if (publishingHouseViewModel.BookIds.Any())//throwing NullPointerException!!!!!!!!!!
-
-            SaveChangedBooksForPublishingHouse(publishingHouseViewModel.BookIds, id);
-            //if (publishingHouseViewModel.BookIds != null)
-            //{
-            //    SaveChangedBooksForPublishingHouse(publishingHouseViewModel.BookIds, id);
-            //}
+            SaveChanges();
         }
 
-        private void SaveChangedBooksForPublishingHouse(List<string> changeBookIds, string id)
+        private void AddChangedBooksForPublishingHouse(List<string> changeBookIds, string id)
         {
             if (changeBookIds == null)
             {
                 changeBookIds = new List<string>();
             }
             
-            List<BookInPublishingHouse> bookInPublishingHouses = bookInPublishingHouseRepository.Find(b => b.PublishingHouse.Id == id).ToList();
+            List<BookInPublishingHouse> bookInPublishingHouses = bookInPublishingHouseRepository.Get(b => b.PublishingHouse.Id == id).ToList();
             if (bookInPublishingHouses == null)
             {
                 bookInPublishingHouses = new List<BookInPublishingHouse>();
@@ -176,10 +161,10 @@ namespace Library.BLL.Services
 
             foreach (var item in changeBookIds)
             {
-                bookInPublishingHouseRepository.Create(new BookInPublishingHouse
+                bookInPublishingHouseRepository.Insert(new BookInPublishingHouse
                 {
-                    Book = bookRepository.GetById(item),
-                    PublishingHouse = publishingHouseRepository.GetById(id),
+                    Book = bookRepository.GetByID(item),
+                    PublishingHouse = publishingHouseRepository.GetByID(id),
                 });
             }
         }
@@ -201,7 +186,7 @@ namespace Library.BLL.Services
 
         public DeletePublishingHouseViewModel GetByIdDelete(string id)
         {
-            PublishingHouse publishingHouse = publishingHouseRepository.GetById(id);
+            PublishingHouse publishingHouse = publishingHouseRepository.GetByID(id);
             return new DeletePublishingHouseViewModel
             {
                 Name = publishingHouse.Name,
@@ -215,11 +200,19 @@ namespace Library.BLL.Services
             try
             {
                 publishingHouseRepository.Delete(id);
+
+                SaveChanges();
             }
             catch
             {
                 throw;
             }
+        }
+
+        private void SaveChanges()
+        {
+            publishingHouseRepository.Save();
+            bookInPublishingHouseRepository.Save();
         }
     }
 }

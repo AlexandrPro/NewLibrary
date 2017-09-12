@@ -31,7 +31,7 @@ namespace Library.BLL.Services
                 Name = item.Name,
                 Type = "Brochure"
             };
-            string publicationId = publicationRepository.Create(publication);
+            publicationRepository.Insert(publication);
 
             Brochure broshure = new Brochure //TODO: automaper
             {
@@ -39,14 +39,16 @@ namespace Library.BLL.Services
                 Name = item.Name,
                 TypeOfCover = item.TypeOfCover,
                 NumberOfPages = item.NumberOfPages,
-                PublicationId = publicationId
+                PublicationId = publication.Id
             };
-            brochureRepository.Create(broshure);
+            brochureRepository.Insert(broshure);
+
+            SaveChanges();
         }
 
         public DetailsBrochureViewModel GetByIdDetails(string id)
         {
-            Brochure brochure = brochureRepository.GetById(id);
+            Brochure brochure = brochureRepository.GetByID(id);
             return new DetailsBrochureViewModel //TODO: Automaper
             {
                 Name = brochure.Name,
@@ -58,7 +60,7 @@ namespace Library.BLL.Services
         public IndexBrochureViewModel GetAll()
         {
             var brochureIndexVM = new IndexBrochureViewModel();
-            brochureIndexVM.brochures = brochureRepository.GetAll().Select(x => new BrochureViewModel
+            brochureIndexVM.brochures = brochureRepository.Get().Select(x => new BrochureViewModel
             {
                 Id = x.Id,
                 Name = x.Name,
@@ -71,7 +73,7 @@ namespace Library.BLL.Services
 
         public EditBrochureViewModel GetByIdEdit(string id)
         {
-            Brochure brochure = brochureRepository.GetById(id);
+            Brochure brochure = brochureRepository.GetByID(id);
             return new EditBrochureViewModel //TODO: Automaper
             {
                 Name = brochure.Name,
@@ -82,20 +84,22 @@ namespace Library.BLL.Services
 
         public void Edit(string id, EditBrochureViewModel brochureViewModel)
         {
-            Brochure brochure = brochureRepository.GetById(id);
+            Brochure brochure = brochureRepository.GetByID(id);
             brochure.Name = brochureViewModel.Name;
             brochure.NumberOfPages = brochureViewModel.NumberOfPages;
             brochure.TypeOfCover = brochureViewModel.TypeOfCover;
             brochureRepository.Update(brochure);
             
-            Publication publication = publicationRepository.GetById(brochure.PublicationId);
+            Publication publication = publicationRepository.GetByID(brochure.PublicationId);
             publication.Name = brochureViewModel.Name;
             publicationRepository.Update(publication);
+
+            SaveChanges();
         }
 
         public DeleteBrochureViewModel GetByIdDelete(string id)
         {
-            Brochure brochure = brochureRepository.GetById(id);
+            Brochure brochure = brochureRepository.GetByID(id);
             return new DeleteBrochureViewModel //TODO: Automaper
             {
                 Name = brochure.Name,
@@ -108,16 +112,24 @@ namespace Library.BLL.Services
         {
             try
             {
-                Brochure brochure = brochureRepository.GetById(id);
+                Brochure brochure = brochureRepository.GetByID(id);
 
                 publicationRepository.Delete(brochure.PublicationId);
 
                 brochureRepository.Delete(id);
+
+                SaveChanges();
             }
             catch
             {
                 throw;
             }
+        }
+
+        private void SaveChanges()
+        {
+            brochureRepository.Save();
+            publicationRepository.Save();
         }
     }
 }

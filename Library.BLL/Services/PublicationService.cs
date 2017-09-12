@@ -20,7 +20,7 @@ namespace Library.BLL.Services
         public IndexPublicationViewModel GetAll()
         {
             var publicationIndexVM = new IndexPublicationViewModel();
-            publicationIndexVM.publications = publicationRepository.GetAll().Select(x => new PublicationViewModel
+            publicationIndexVM.publications = publicationRepository.Get().Select(x => new PublicationViewModel
             {
                 Id = x.Id,
                 Name = x.Name,
