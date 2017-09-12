@@ -5,27 +5,6 @@
 <h2>Brochures</h2>
 
 <div id="grid"></div>
-@*@(Html.Kendo().Grid<Library.ViewModels.Brochure.BrochureViewModel>()
-        .Name("grid")
-        .Columns(columns =>
-        {
-            columns.Bound(c => c.Name);
-            columns.Bound(c => c.TypeOfCover);
-            columns.Bound(c => c.NumberOfPages);
-        })
-        .HtmlAttributes(new { style = "height: 550px;" })
-        .Scrollable()
-        .Groupable()
-        .Sortable()
-        .Pageable(pageable => pageable
-            .Refresh(true)
-            .PageSizes(true)
-            .ButtonCount(5))
-        .DataSource(dataSource => dataSource
-            .Ajax()
-            .Read(read => read.Action("Brochures_Read", "Brochure"))
-            .PageSize(20)
-        )
-)*@
+
 
 <script src="~/Scripts/Brochure/Index.js" language="javascript" type="text/javascript"></script>

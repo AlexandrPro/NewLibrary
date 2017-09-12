@@ -29,11 +29,6 @@ namespace Library.Controllers
             return Json(publishingHouseService.GetAll().publishingHouses/*.ToDataSourceResult(request)*/, JsonRequestBehavior.AllowGet);
         }
 
-        //public JsonResult Books_Read([DataSourceRequest] DataSourceRequest request)
-        //{
-        //    return Json(publishingHouseService.GetAllBooks().Books/*.ToDataSourceResult(request)*/, JsonRequestBehavior.AllowGet);
-        //}
-
         [Authorize]
         public ActionResult Admin()
         {
@@ -100,13 +95,7 @@ namespace Library.Controllers
                 //return View();
             }
         }
-
-
-        //public JsonResult SelectedBooks_Read(string id, [DataSourceRequest] DataSourceRequest request)
-        //{
-        //    return Json(publishingHouseService.GetPublishubgHouseBooks(id)/*.ToDataSourceResult(request)*/, JsonRequestBehavior.AllowGet);
-        //}
-
+        
         // GET: PublishingHouse/Delete/5
         [Authorize]
         public ActionResult Delete(string id)

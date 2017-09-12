@@ -13,14 +13,12 @@ namespace Library.BLL.Services
         ApplicationContext db;
         PublishingHouseRepository publishingHouseRepository;
         BookInPublishingHouseRepository bookInPublishingHouseRepository;
-        //BookRepository bookRepository;
 
         public PublishingHouseService()
         {
             db = new ApplicationContext();
             publishingHouseRepository = new PublishingHouseRepository(db);
             bookInPublishingHouseRepository = new BookInPublishingHouseRepository(db);
-            //bookRepository = new BookRepository(db);
         }
 
         public void Create(CreatePublishingHouseViewModel publishingHouseViewModel)
@@ -33,19 +31,7 @@ namespace Library.BLL.Services
                 Address = publishingHouseViewModel.Address,
             };
             publishingHouseRepository.Insert(publishingHouse);
-
-            //if (publishingHouseViewModel.BookIds != null)
-            //{
-            //    foreach (var item in publishingHouseViewModel.BookIds)
-            //    {
-            //        bookInPublishingHouseRepository.Insert(new BookInPublishingHouse()
-            //        {
-            //            Book = bookRepository.GetByID(item),
-            //            PublishingHouse = publishingHouse,
-            //        });
-            //    }
-            //}
-
+            
             SaveChanges();
         }
 
@@ -59,23 +45,6 @@ namespace Library.BLL.Services
                 Books = GetPublishingHouseBooksToString(publishingHouse),
             };
         }
-
-        //public BookListViewModel GetAllBooks()
-        //{
-        //    IEnumerable<Book> books = bookRepository.Get(); 
-        //    BookListViewModel bookListViewModels = new BookListViewModel();
-        //    bookListViewModels.Books = new List<BookViewModel>();
-        //    foreach (var item in books)
-        //    {
-        //        bookListViewModels.Books.Add(new BookViewModel()
-        //        {
-        //            Id = item.Id,
-        //            Name = item.Name,
-        //        });
-        //    }
-        //    return bookListViewModels;
-        //}
-
         public IndexPublishingHouseViewModel GetAll()
         {
             var publishingHouseIndexVM = new IndexPublishingHouseViewModel();
@@ -112,18 +81,7 @@ namespace Library.BLL.Services
                 Address = publishingHouse.Address,
             };
         }
-
-        //public List<BookViewModel> GetPublishubgHouseBooks(string Id)
-        //{
-        //    var bookViewModels = bookInPublishingHouseRepository.GetPublishingHouseBooks(Id).
-        //        Select(x => new BookViewModel
-        //        {
-        //            Id = x.Id, 
-        //            Name = x.Name,
-        //        }).ToList();
-
-        //    return bookViewModels;
-        //}
+        
 
         public void Edit(string id, EditPublishingHouseViewModel publishingHouseViewModel)//TODO: refactor
         {
@@ -132,48 +90,10 @@ namespace Library.BLL.Services
             publishingHouse.Name = publishingHouseViewModel.Name;
             publishingHouse.Address = publishingHouseViewModel.Address;
             publishingHouseRepository.Update(publishingHouse);
-
-            //AddChangedBooksForPublishingHouse(publishingHouseViewModel.BookIds, id);
-
+            
             SaveChanges();
         }
-
-        //private void AddChangedBooksForPublishingHouse(List<string> changeBookIds, string id)
-        //{
-            
-        //    List<BookInPublishingHouse> bookInPublishingHouses = bookInPublishingHouseRepository.Get(b => b.PublishingHouse.Id == id).ToList();
         
-        //    RemoveAllNotChangedBooks(bookInPublishingHouses, changeBookIds);
-            
-        //    foreach (var item in bookInPublishingHouses)
-        //    {
-        //        bookInPublishingHouseRepository.Delete(item.Id);
-        //    }
-
-        //    foreach (var item in changeBookIds)
-        //    {
-        //        bookInPublishingHouseRepository.Insert(new BookInPublishingHouse
-        //        {
-        //            Book = bookRepository.GetByID(item),
-        //            PublishingHouse = publishingHouseRepository.GetByID(id),
-        //        });
-        //    }
-        //}
-
-        //private void RemoveAllNotChangedBooks(List<BookInPublishingHouse> bookInPublishingHouses, List<string> changeBookIds)
-        //{
-        //    for (int i = 0; i < bookInPublishingHouses.Count; i++)
-        //    {
-        //        for (int j = 0; j < changeBookIds.Count; j++)
-        //        {
-        //            if (bookInPublishingHouses[i].Book.Id == changeBookIds[j])
-        //            {
-        //                bookInPublishingHouses.Remove(bookInPublishingHouses[i]);
-        //                changeBookIds.Remove(changeBookIds[j]);
-        //            }
-        //        }
-        //    }
-        //}
 
         public DeletePublishingHouseViewModel GetByIdDelete(string id)
         {

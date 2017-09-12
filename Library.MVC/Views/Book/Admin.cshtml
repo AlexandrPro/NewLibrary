@@ -11,29 +11,5 @@
 </p>
 
 <div id="grid"></div>
-@*@(Html.Kendo().Grid<Library.ViewModels.Book.BookViewModel>()
-        .Name("grid")
-        .Columns(columns =>
-        {
-            columns.Bound(c => c.Author);
-            columns.Bound(c => c.Name);
-            columns.Bound(c => c.YearOfPublishing);
-            columns.Bound(o => o.Name).ClientTemplate(@Html.ActionLink("Edit", "Edit", new { ID = "#=Id#" }).ToHtmlString()).Title("Edit");
-            columns.Bound(o => o.Name).ClientTemplate(@Html.ActionLink("Delete", "Delete", new { ID = "#=Id#" }).ToHtmlString()).Title("Delete");
-        })
-        .HtmlAttributes(new { style = "height: 550px;" })
-        .Scrollable()
-        .Groupable()
-        .Sortable()
-        .Pageable(pageable => pageable
-            .Refresh(true)
-            .PageSizes(true)
-            .ButtonCount(5))
-        .DataSource(dataSource => dataSource
-            .Ajax()
-            .Read(read => read.Action("Books_Read", "Book"))
-            .PageSize(20)
-        )
-)*@
 
 <script src="~/Scripts/Book/Admin.js" language="javascript" type="text/javascript"></script>

@@ -5,15 +5,6 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <!-- Custom styles for this template -->
-    @*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    @*<link href="~/Content/ie10-viewport-bug-workaround.css" rel="stylesheet">*@
-
-    <!-- Custom styles for this template -->
-    
     
     @Styles.Render("~/Styles/bootstrap3.css")
     @Styles.Render("~/Content/kendo/css")
@@ -50,32 +41,6 @@
         </div>
       </div>
     </nav>
-
-
-    @*<div class="container-fluid wraper">
-      <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar" id="sidebar">
-              <ul class="nav nav-sidebar">
-                  <li><a href="~/Book/Admin">Books</a></li>
-                  <li><a href="~/Brochure/Admin">Brochures</a></li>
-                  <li><a href="~/Magazine/Admin">Magazines</a></li>
-                  <li><a href="~/PublishingHouse/Admin">Publishing Houses</a></li>
-              </ul>
-         </div>
-          
-
-          
-              <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                  @RenderBody()
-                  <hr />
-                  <footer>
-                      <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-                  </footer>
-              </div>
-             
-
-          </div>
-    </div>*@
       <div id="wrapper"  class="toggled">
 
           <!-- Sidebar -->

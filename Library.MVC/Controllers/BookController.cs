@@ -1,9 +1,7 @@
 ﻿using System.Web.Mvc;
 using Library.BLL.Services;
 using Kendo.Mvc.UI;
-using Kendo.Mvc.Extensions;
 using Library.ViewModels.Book;
-using System;
 
 namespace Library.Controllers
 {

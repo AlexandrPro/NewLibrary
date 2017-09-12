@@ -1,7 +1,5 @@
 ﻿$(document).ready(function () {
 
-    //alert(JSON.stringify(selectedValues));
-
     $("#multiSelect").kendoMultiSelect({
         placeholder: "Select products...",
         dataTextField: "Name",

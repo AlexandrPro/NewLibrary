@@ -13,28 +13,4 @@
 <div id="grid"></div>
 
 
-@*@(Html.Kendo().Grid<Library.ViewModels.PublishingHouse.PublishingHouseViewModel>()
-        .Name("grid")
-        .Columns(columns =>
-        {
-            columns.Bound(c => c.Name);
-            columns.Bound(c => c.Address);
-            columns.Bound(c => c.Books);
-            columns.Bound(o => o.Name).ClientTemplate(@Html.ActionLink("Edit", "Edit", new { ID = "#=Id#" }).ToHtmlString()).Title("Edit");
-            columns.Bound(o => o.Name).ClientTemplate(@Html.ActionLink("Delete", "Delete", new { ID = "#=Id#" }).ToHtmlString()).Title("Delete");
-        })
-        .HtmlAttributes(new { style = "height: 550px;" })
-        .Scrollable()
-        .Groupable()
-        .Sortable()
-        .Pageable(pageable => pageable
-            .Refresh(true)
-            .PageSizes(true)
-            .ButtonCount(5))
-        .DataSource(dataSource => dataSource
-            .Ajax()
-            .Read(read => read.Action("PublishingHouses_Read", "PublishingHouse"))
-            .PageSize(20)
-        )
-)*@
 <script src="~/Scripts/PublishingHouse/Admin.js" language="javascript" type="text/javascript"></script>

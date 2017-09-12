@@ -6,26 +6,6 @@
 
 <div id="grid"></div>
 
-@*@(Html.Kendo().Grid<Library.ViewModels.Publication.PublicationViewModel>()
-        .Name("grid")
-        .Columns(columns =>
-        {
-            columns.Bound(c => c.Name);
-            columns.Bound(c => c.Type);
-        })
-        .HtmlAttributes(new { style = "height: 550px;" })
-        .Scrollable()
-        .Groupable()
-        .Sortable()
-        .Pageable(pageable => pageable
-            .Refresh(true)
-            .PageSizes(true)
-            .ButtonCount(5))
-        .DataSource(dataSource => dataSource
-            .Ajax()
-            .Read(read => read.Action("Publications_Read", "Publication"))
-            .PageSize(20)
-        )
-)*@
+
 
 <script src="~/Scripts/Publications/Index.js" language="javascript" type="text/javascript"></script>
