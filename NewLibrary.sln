@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.MVC", "Library.MVC\Library.MVC.csproj", "{82A3DD09-25CB-41BC-8E76-EE01E4046074}"
 EndProject
@@ -11,9 +11,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Entities", "Library
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.ViewModels", "Library.ViewModels\Library.ViewModels.csproj", "{723F0387-AD39-4B89-8314-893F527FE022}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Services", "Library.BLL\Library.Services.csproj", "{B0714C3F-8581-4A5C-AFB8-3DF332004CA4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Services", "Library.Services\Library.Services.csproj", "{B0714C3F-8581-4A5C-AFB8-3DF332004CA4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.DataAccess", "Library.DAL\Library.DataAccess.csproj", "{45448DB5-CE7A-42B9-A533-847ADB21DAD7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.DataAccess", "Library.DataAccess\Library.DataAccess.csproj", "{45448DB5-CE7A-42B9-A533-847ADB21DAD7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -48,5 +48,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{30675245-4772-4631-9FB2-C0B2788CF641} = {866D17FB-832C-4C79-AF42-8BDD350E4252}
 		{723F0387-AD39-4B89-8314-893F527FE022} = {866D17FB-832C-4C79-AF42-8BDD350E4252}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EEAACE22-D1DC-4780-B83E-6F23E3E2E3D8}
 	EndGlobalSection
 EndGlobal

@@ -25,6 +25,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -1898,17 +1899,17 @@
     <Folder Include="Views\Default\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Library.BLL\Library.Services.csproj">
-      <Project>{b0714c3f-8581-4a5c-afb8-3df332004ca4}</Project>
-      <Name>Library.Services</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Library.DAL\Library.DataAccess.csproj">
+    <ProjectReference Include="..\Library.DataAccess\Library.DataAccess.csproj">
       <Project>{45448db5-ce7a-42b9-a533-847adb21dad7}</Project>
       <Name>Library.DataAccess</Name>
     </ProjectReference>
     <ProjectReference Include="..\Library.Entities\Library.Entities.csproj">
       <Project>{30675245-4772-4631-9fb2-c0b2788cf641}</Project>
       <Name>Library.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library.Services\Library.Services.csproj">
+      <Project>{b0714c3f-8581-4a5c-afb8-3df332004ca4}</Project>
+      <Name>Library.Services</Name>
     </ProjectReference>
     <ProjectReference Include="..\Library.ViewModels\Library.ViewModels.csproj">
       <Project>{723f0387-ad39-4b89-8314-893f527fe022}</Project>
