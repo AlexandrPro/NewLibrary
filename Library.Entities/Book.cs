@@ -20,6 +20,6 @@ namespace Library.Entities
         public DateTime YearOfPublishing { get; set; }
 
         [Required]
-        public string PublicationId { get; set; }
+        public virtual Publication Publication { get; set; }
     }
 }

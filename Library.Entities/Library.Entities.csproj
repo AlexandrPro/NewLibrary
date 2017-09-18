@@ -58,6 +58,7 @@
     <Compile Include="Book.cs" />
     <Compile Include="BookInPublishingHouse.cs" />
     <Compile Include="Brochure.cs" />
+    <Compile Include="Enums\PublicationType.cs" />
     <Compile Include="Magazine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Publication.cs" />

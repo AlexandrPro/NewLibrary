@@ -108,6 +108,7 @@ namespace Library.DataAccess.Repository
 
                 if (reader.HasRows) // если есть данные
                 {
+                    Context.Publications.Find();
                     while (reader.Read()) // построчно считываем данные
                     {
                         string id = (string)reader.GetValue(0);
@@ -115,7 +116,7 @@ namespace Library.DataAccess.Repository
                         string name = (string)reader.GetValue(2);
                         string author = (string)reader.GetValue(3);
                         DateTime yearOfPublishing = (DateTime)reader.GetValue(4);
-                        string publicationId = (string)reader.GetValue(5);
+                        Publication publication = Context.Publications.Find((int)reader.GetValue(5));
 
                         books.Add(new Book
                         {
@@ -123,7 +124,7 @@ namespace Library.DataAccess.Repository
                             CreationDate = creationDate,
                             Name = name,
                             Author = author,
-                            PublicationId = publicationId,
+                            Publication = publication,
                             YearOfPublishing = yearOfPublishing,
                         });
                     }

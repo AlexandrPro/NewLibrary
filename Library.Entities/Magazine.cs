@@ -10,6 +10,6 @@ namespace Library.Entities
         public string Name { get; set; }
         public int Number { get; set; }
         public DateTime YearOfPublishing { get; set; }
-        public string PublicationId { get; set; }
+        public virtual Publication Publication { get; set; }
     }
 }

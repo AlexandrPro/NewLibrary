@@ -1,6 +1,7 @@
 ﻿using Library.DataAccess.EF;
 using Library.DataAccess.Repository;
 using Library.Entities;
+using Library.Entities.Enums;
 using Library.ViewModels.Brochure;
 using System;
 using System.Collections.Generic;
@@ -29,7 +30,7 @@ namespace Library.Services
             {
                 CreationDate = DateTime.Now,
                 Name = item.Name,
-                Type = "Brochure"
+                Type = PublicationType.Brochure,
             };
             publicationRepository.Insert(publication);
 
@@ -39,7 +40,7 @@ namespace Library.Services
                 Name = item.Name,
                 TypeOfCover = item.TypeOfCover,
                 NumberOfPages = item.NumberOfPages,
-                PublicationId = publication.Id
+                Publication = publication,
             };
             brochureRepository.Insert(broshure);
 
@@ -90,7 +91,7 @@ namespace Library.Services
             brochure.TypeOfCover = brochureViewModel.TypeOfCover;
             brochureRepository.Update(brochure);
             
-            Publication publication = publicationRepository.GetByID(brochure.PublicationId);
+            Publication publication = publicationRepository.GetByID(brochure.Publication.Id);
             publication.Name = brochureViewModel.Name;
             publicationRepository.Update(publication);
 
@@ -114,7 +115,7 @@ namespace Library.Services
             {
                 Brochure brochure = brochureRepository.GetByID(id);
 
-                publicationRepository.Delete(brochure.PublicationId);
+                publicationRepository.Delete(brochure.Publication.Id);
 
                 brochureRepository.Delete(id);
 

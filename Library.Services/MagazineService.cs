@@ -1,6 +1,7 @@
 ﻿using Library.DataAccess.EF;
 using Library.DataAccess.Repository;
 using Library.Entities;
+using Library.Entities.Enums;
 using Library.ViewModels.Magazine;
 using System;
 using System.Collections.Generic;
@@ -29,7 +30,7 @@ namespace Library.Services
             {
                 CreationDate = DateTime.Now,
                 Name = item.Name,
-                Type = "Magazine"
+                Type = PublicationType.Magazin
             };
             publicationRepository.Insert(publication);
 
@@ -38,7 +39,7 @@ namespace Library.Services
                 CreationDate = DateTime.Now,
                 Name = item.Name,
                 YearOfPublishing = item.YearOfPublishing,
-                PublicationId = publication.Id
+                Publication = publication,
             };
             magazineRepository.Insert(magazine);
 
@@ -89,7 +90,7 @@ namespace Library.Services
             magazine.YearOfPublishing = magazineViewModel.YearOfPublishing;
             magazineRepository.Update(magazine);
 
-            Publication publication = publicationRepository.GetByID(magazine.PublicationId);
+            Publication publication = publicationRepository.GetByID(magazine.Publication.Id);
             publication.Name = magazineViewModel.Name;
             publicationRepository.Update(publication);
 
@@ -113,7 +114,7 @@ namespace Library.Services
             {
                 Magazine magazine = magazineRepository.GetByID(id);
 
-                publicationRepository.Delete(magazine.PublicationId);
+                publicationRepository.Delete(magazine.Publication.Id);
 
                 magazineRepository.Delete(id);
 

@@ -16,8 +16,7 @@ namespace Library.Entities
         public string TypeOfCover { get; set; }
 
         public int NumberOfPages { get; set; }
-
-        [Required]
-        public string PublicationId { get; set; }
+       
+        public virtual Publication Publication { get; set; }
     }
 }

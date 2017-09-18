@@ -1,6 +1,7 @@
 ﻿using Library.DataAccess.EF;
 using Library.DataAccess.Repository;
 using Library.Entities;
+using Library.Entities.Enums;
 using Library.ViewModels.Book;
 using System;
 using System.Collections.Generic;
@@ -33,7 +34,7 @@ namespace Library.Services
             {
                 CreationDate = DateTime.Now,
                 Name = bookViewModel.Name,
-                Type = "Book"
+                Type = PublicationType.Book,
             };
             publicationRepository.Insert(publication);
 
@@ -43,7 +44,7 @@ namespace Library.Services
                 Author = bookViewModel.Author,
                 Name = bookViewModel.Name,
                 YearOfPublishing = bookViewModel.YearOfPublishing,
-                PublicationId = publication.Id
+                Publication = publication,
             };
             bookRepository.Insert(book);
             
@@ -150,7 +151,7 @@ namespace Library.Services
             book.Author = bookViewModel.Author;
             bookRepository.Update(book);
 
-            Publication publication = publicationRepository.GetByID(book.PublicationId);
+            Publication publication = publicationRepository.GetByID(book.Publication.Id);
             publication.Name = bookViewModel.Name;
             publicationRepository.Update(publication);
 
@@ -215,7 +216,7 @@ namespace Library.Services
             {
                 Book book = bookRepository.GetByID(id);
 
-                publicationRepository.Delete(book.PublicationId);
+                publicationRepository.Delete(book.Publication.Id);
 
                 bookRepository.Delete(id);
 

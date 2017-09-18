@@ -1,6 +1,7 @@
 ﻿using Library.DataAccess.EF;
 using Library.DataAccess.Repository;
 using Library.Entities;
+using Library.Entities.Enums;
 using Library.ViewModels.Publication;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,7 @@ namespace Library.Services
             {
                 Id = x.Id,
                 Name = x.Name,
-                Type = x.Type,
+                Type = x.Type.ToString(),
             }).ToList();
             return publicationIndexVM;
         }

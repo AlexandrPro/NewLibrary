@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Library.Entities.Enums;
+using System.ComponentModel.DataAnnotations;
 
 namespace Library.Entities
 {
@@ -9,7 +10,6 @@ namespace Library.Entities
         public string Name { get; set; }
 
         [Required]
-        [StringLength(50)]
-        public string Type { get; set; }
+        public PublicationType Type { get; set; }
     }
 }
